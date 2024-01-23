@@ -15,6 +15,10 @@ This repository keeps track of my preparation for the upcoming **Research Contes
     - [Learn LaTeX in 30 minutes](https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes) (self-paced)
   - Daily LaTeX practice is preferable to learning all commands at once because there are just too many things
 - Jan. 23:
+  - Grasp the idea of skeletonization as it is a new concept to me
+    - [Skeletonization 101](<papers to research/skeletonization_101.md>)
+    - [Skeletonization-Wikipedia](https://en.wikipedia.org/wiki/Skeletonization)
+  - 
 - ... 
 
 `Expected end date: March 18 2024`
