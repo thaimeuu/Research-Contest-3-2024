@@ -20,6 +20,7 @@ This repository keeps track of my preparation for the upcoming **Research Contes
     - [Skeletonization/Medial Axis Transform](https://homepages.inf.ed.ac.uk/rbf/HIPR2/skeleton.htm#:~:text=Brief%20Description,of%20the%20original%20foreground%20pixels.)
   - Read [Hi-LASSIE Paper](<papers to research/Yao_Hi-LASSIE_High-Fidelity_Articulated_Shape_and_Skeleton_Discovery_From_Sparse_Image_CVPR_2023_paper.pdf>)
   - [Hi-LASSIE Project Page](https://chhankyao.github.io/hi-lassie/)
+  - Learn LaTeX commands
   - Documents for later use:
     - [Distance Transform](https://homepages.inf.ed.ac.uk/rbf/HIPR2/distance.htm)
     - [Thinning](https://homepages.inf.ed.ac.uk/rbf/HIPR2/thin.htm)
