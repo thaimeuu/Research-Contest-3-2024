@@ -8,7 +8,7 @@ This repository keeps track of my preparation for the upcoming **Research Contes
 
 - Jan. 22: 
   - Get stressed learning about LaTeX
-  - Set up environment in vscode (Failed)
+  - Set up environment in vscode `Failed`
   - Currently using **Texmaker** and [Overleaf](https://www.overleaf.com/project) instead
   - Learning LaTeX commands
     - [LaTeX – Full Tutorial for Beginners](https://www.youtube.com/watch?v=ydOTMQC7np0&ab_channel=freeCodeCamp.org) (extremely low-paced)
@@ -28,7 +28,7 @@ This repository keeps track of my preparation for the upcoming **Research Contes
     - [Thresholding](https://homepages.inf.ed.ac.uk/rbf/HIPR2/threshld.htm)
 - Jan. 24:
   - Continue reading [Hi-LASSIE Paper](<papers to research/Yao_Hi-LASSIE_High-Fidelity_Articulated_Shape_and_Skeleton_Discovery_From_Sparse_Image_CVPR_2023_paper.pdf>)
-  - Analyze and Run/Test Hi-LASSIE Code
+  - Analyze and Run/Test Hi-LASSIE Code `Failed`
   - Successfully using **Zhang-Suen thinning** to extract a `skeleton image` from [Crack detection's Panicle image](test_img.png)
 
 `Expected end date: March 18 2024`
