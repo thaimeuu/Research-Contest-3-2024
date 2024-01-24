@@ -29,5 +29,6 @@ This repository keeps track of my preparation for the upcoming **Research Contes
 - Jan. 24:
   - Continue reading [Hi-LASSIE Paper](<papers to research/Yao_Hi-LASSIE_High-Fidelity_Articulated_Shape_and_Skeleton_Discovery_From_Sparse_Image_CVPR_2023_paper.pdf>)
   - Analyze and Run/Test Hi-LASSIE Code
+  - Successfully using Zhang-Suen thinning to extract a skeleton image from **Crack detection's Panicle image**
 
 `Expected end date: March 18 2024`
