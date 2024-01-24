@@ -26,6 +26,8 @@ This repository keeps track of my preparation for the upcoming **Research Contes
     - [Thinning](https://homepages.inf.ed.ac.uk/rbf/HIPR2/thin.htm)
     - [Binary Images](https://homepages.inf.ed.ac.uk/rbf/HIPR2/binimage.htm)
     - [Thresholding](https://homepages.inf.ed.ac.uk/rbf/HIPR2/threshld.htm)
-- ... 
+- Jan. 24:
+  - Continue reading [Hi-LASSIE Paper](<papers to research/Yao_Hi-LASSIE_High-Fidelity_Articulated_Shape_and_Skeleton_Discovery_From_Sparse_Image_CVPR_2023_paper.pdf>)
+  - Analyze and Run/Test Hi-LASSIE Code
 
 `Expected end date: March 18 2024`
