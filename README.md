@@ -29,12 +29,12 @@ This repository keeps track of my preparation for the upcoming Research Contest 
     - [Binary Images](https://homepages.inf.ed.ac.uk/rbf/HIPR2/binimage.htm)
     - [Thresholding](https://homepages.inf.ed.ac.uk/rbf/HIPR2/threshld.htm)
 - Jan. 24:
-  - Continue reading [Hi-LASSIE Paper](<papers to research/Yao_Hi-LASSIE_High-Fidelity_Articulated_Shape_and_Skeleton_Discovery_From_Sparse_Image_CVPR_2023_paper.pdf>)
+  - Continue reading [Hi-LASSIE Paper](<papers to research/Yao_Hi-LASSIE_High-Fidelity_Articulated_Shape_and_Skeleton_Discovery_From_Sparse_Image_CVPR_2023_paper.pdf>) `Unfinished`
   - Analyze and Run/Test Hi-LASSIE Code `Failed`
   - Successfully using **Zhang-Suen thinning** to extract a `skeleton image` from [Crack detection's Panicle image](test_img.png)
 - Jan. 25:
-  - Read [Zhang-Suen Thinning paper](<papers to research/A Fast Parallel Algorithm for Thinning Digital Patterns.pdf>)
-  - Manually add junctions and their classes to [dataset (only on local machine)](<target paper/T2-PLT9-1C8-1 (Dataset)>)
-  - Testing code for **Zhang-Suen** and making **Grayscale Dataset**
+  - Read [Zhang-Suen Thinning paper](<papers to research/A Fast Parallel Algorithm for Thinning Digital Patterns.pdf>) `Done`
+  - Testing code for **Zhang-Suen** and making [Skeleton dataset](skeleton_dataset) `Done`
+  - Manually add junctions and their classes to [dataset (only on local machine)](<target paper/T2-PLT9-1C8-1 (Dataset)>) `Unfinished`
 
 `Expected end date: March 18 2024`
