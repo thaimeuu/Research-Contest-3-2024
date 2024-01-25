@@ -34,7 +34,7 @@ This repository keeps track of my preparation for the upcoming Research Contest 
   - Successfully using **Zhang-Suen thinning** to extract a `skeleton image` from [Crack detection's Panicle image](test_img.png)
 - Jan. 25:
   - Read [Zhang-Suen Thinning paper](<papers to research/A Fast Parallel Algorithm for Thinning Digital Patterns.pdf>)
-  - Manually add junctions and their classes to [dataset](<target paper/T2-PLT9-1C8-1 (Dataset)>)
+  - Manually add junctions and their classes to [dataset (only on local machine)](<target paper/T2-PLT9-1C8-1 (Dataset)>)
   - Testing code for **Zhang-Suen** and making **Grayscale Dataset**
 
 `Expected end date: March 18 2024`
