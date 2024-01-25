@@ -36,5 +36,6 @@ This repository keeps track of my preparation for the upcoming Research Contest 
   - Read [Zhang-Suen Thinning paper](<paper/papers to research/A Fast Parallel Algorithm for Thinning Digital Patterns.pdf>) `Done`
   - Testing code for **Zhang-Suen** and making [Skeleton dataset](skeleton_dataset) `Done`
   - Manually add junctions and their classes to [dataset (only on local machine)](<paper/target paper/T2-PLT9-1C8-1 (Dataset)>) `Unfinished`
-
+  - Learn LaTeX commands
+- 
 `Expected end date: March 18 2024`
