@@ -1,26 +1,37 @@
 import cv2
-import numpy as np
 
-def rgb_to_gray(rgb_image):
-    # Convert RGB image to grayscale
-    gray_image = cv2.cvtColor(rgb_image, cv2.COLOR_RGB2GRAY)
-    return gray_image
+"""
+Inputs:
+    RGB image path of a panicle
+    
+Outputs:
+    Grayscale image saved in folder grayscale_dataset/
+    
+Instructions:
+    Run this file first and take the output as input for label_dataset.py
+""" 
 
 
-input_image_path = 'test_RGB_img.JPG'
-rgb_image = cv2.imread(input_image_path)
+def rgb_2_gray(rgb_path):
+    """
+    rgb 2 grayscale
 
+    Args:
+        rgb_path (str): path
+        
+    Returns:
+        grayscale img
+    """
+    rgb = cv2.imread(rgb_path)
+    gray = cv2.cvtColor(rgb, cv2.COLOR_BGR2GRAY)
+    
+    return gray
 
-# Convert RGB to grayscale
-grayscale_image = rgb_to_gray(rgb_image)
-
-# Display the original and grayscale images
-# cv2.imshow('Original RGB Image', rgb_image)
-# cv2.imshow('Grayscale Image', grayscale_image)
-
-# Save the grayscale image to a file
-cv2.imwrite(r'grayscale_dataset/grayscale_output.jpg', grayscale_image)
-
-# Wait for a key press and then close the windows
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+def main():
+    rgb_path = r"Jouannic_dataset/1C8-12-3.JPG"
+    gray = rgb_2_gray(rgb_path)
+    cv2.imwrite(f"grayscale_dataset/{rgb_path[17:]}", gray)
+    
+if __name__ == "__main__":
+    main()
+    
