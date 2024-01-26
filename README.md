@@ -37,5 +37,8 @@ This repository keeps track of my preparation for the upcoming Research Contest 
   - Testing code for **Zhang-Suen** and making [Skeleton dataset](skeleton_dataset) `Done`
   - Manually add junctions and their classes to [dataset (only on local machine)](<paper/target paper/T2-PLT9-1C8-1 (Dataset)>) `Unfinished`
   - Learn LaTeX commands
-- 
+- Jan. 26:
+  - Reread [2013 Jouannic Paper](<paper/target paper/1471-2229-13-122 (2013_paper_Stefan Jouannic).pdf>) to answer the question: `How to distinguish Generating point and Primary point`
+  - Learn LaTeX commands
+
 `Expected end date: March 18 2024`
