@@ -38,7 +38,15 @@ This repository keeps track of my preparation for the upcoming Research Contest 
   - Manually add junctions and their classes to [dataset (only on local machine)](<paper/target paper/T2-PLT9-1C8-1 (Dataset)>) `Unfinished`
   - Learn LaTeX commands
 - Jan. 26:
-  - Reread [2013 Jouannic Paper](<paper/target paper/1471-2229-13-122 (2013_paper_Stefan Jouannic).pdf>) to answer the question: `How to distinguish Generating point and Primary point`
+  - Reread [2013 Jouannic Paper](<paper/target paper/1471-2229-13-122 (2013_paper_Stefan Jouannic).pdf>) to answer the question: `How to distinguish Generating point and Primary point` `Unfinished`
+  - Successfully label (add junctions) to dataset
+  - Junction-related scripts:
+    - [RGB_2_GRAY](rgb_2_gray.py): Turning RGB image to Gray
+    - [Junction coordinate](vertices_coordinates.py): Extracting coordinate from [paper's xml](Jouannic_xml) file
+    - [label_dataset](label_dataset.py): Adding junctions to grayscale
+  - Creating new dataset folders:
+    - [grayscale_dataset](grayscale_dataset)
+    - [labelled_dataset](labelled_dataset)
   - Learn LaTeX commands
 
 `Expected end date: March 18 2024`
