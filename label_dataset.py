@@ -16,18 +16,21 @@ Instructions:
 """
 
 def main():
+    # Read grayscale img
     path = r"grayscale_dataset/1C8-10-2.JPG"
     img = cv2.imread(path)
 
     xml_file_path = f"Jouannic_xml/{path[18:-4]}.ricepr"
 
+    # lists of junctions' coordinate
     generating = find_vertices("Generating", xml_file_path)
     primary = find_vertices("Primary", xml_file_path)
-    secondary = find_vertices("Seconday", xml_file_path)
+    secondary = find_vertices("Seconday", xml_file_path)  # not typo
     tertiary = find_vertices("Tertiary", xml_file_path)
     quaternary = find_vertices("Quaternary", xml_file_path)
     terminal = find_vertices("End", xml_file_path)
 
+    # Add junctions to grayscale img
     for a, b in generating:
         cv2.circle(img, (a, b), 10, (0, 255, 255), cv2.FILLED)
     for a, b in primary:
@@ -41,6 +44,7 @@ def main():
     for a, b in terminal:
         cv2.circle(img, (a, b), 10, (0, 0, 255), cv2.FILLED)
 
+    # Save file
     cv2.imwrite(f"labelled_dataset/{path[18:]}", img)
 
 
