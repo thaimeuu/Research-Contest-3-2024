@@ -3,9 +3,12 @@ import numpy as np
 import cv2
 
 """
-This script extracts the skeleton image of/from a "Rice Panicle" binary image
+Inputs:
+    "Rice Panicle" binary image
 
-It also saves the skeleton image under the same name as the initial path and places it in skeleton_dataset/
+Outputs:
+    Skeleton image of "Rice Panicle"
+    saves the skeleton image under the same name as the initial path and places it in skeleton_dataset/
 """
 
 
@@ -16,7 +19,7 @@ def main():
 
     # Extract Skeleton
     skeleton = skeletonize(img, method="zhang").astype(np.uint8) * 255
-    
+
     # Save file
     cv2.imwrite(f"skeleton_dataset/{binary_img_path}", skeleton)
 
