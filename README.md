@@ -50,6 +50,6 @@ This repository keeps track of my preparation for the upcoming Research Contest 
 - Jan 27:
   - In general, first week's work is done
   - Reorganize code and files
-  - Learn LaTeX commands
+
 
 `Expected end date: March 18 2024`
