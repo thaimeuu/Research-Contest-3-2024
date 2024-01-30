@@ -50,6 +50,8 @@ This repository keeps track of my preparation for the upcoming Research Contest 
 - Jan 27:
   - In general, first week's work is done
   - Reorganize code and files
-
+- Jan 30:
+  - Read [Denmune](<paper/papers to research/2021_DenMune Density peak based clustering using mutual nearest neighbors.pdf>)
+  - Learn LaTeX commands
 
 `Expected end date: March 18 2024`
