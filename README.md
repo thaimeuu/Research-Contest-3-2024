@@ -1,12 +1,19 @@
 ## `RESEARCH-CONTEST-3-2024`
 
 ```
-This repository keeps track of my preparation for the upcoming Research Contest held by my university
+This repository keeps track of my preparation 
+for the upcoming Research Contest held by my university
 ```
 
-`Start date: January 22 2024`
+### `NOVELTY OF THE PROJECT`
 
-`PROJECT TRACKER:`
+- Using crack detection model to `extract binary image` rather than applying a global threshold which may cause inaccuracy in the binary image
+- Using state of the art `Clustering algorithms` to identify junctions
+- Including `Result quantification` to assess the accuracy of `Clustering algorithms` in the task of identifying junctions
+
+### `PROJECT TRACKER:`
+
+`Start date: January 22 2024`
 
 - Jan 22: 
   - Get stressed learning about LaTeX
