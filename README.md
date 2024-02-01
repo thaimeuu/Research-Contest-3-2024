@@ -60,6 +60,7 @@ for the upcoming Research Contest held by my university
 - Jan 31:
   - Read [Denmune](<paper/papers to research/2021_DenMune Density peak based clustering using mutual nearest neighbors.pdf>)
 - Feb 1:
-  - Continue reading [Denmune](<paper/papers to research/2021_DenMune Density peak based clustering using mutual nearest neighbors.pdf>) 
+  - Continue reading [Denmune](<paper/papers to research/2021_DenMune Density peak based clustering using mutual nearest neighbors.pdf>) `Finished`
+  - Test DenMune code `Failed - can't install ngt package`
 
 `Expected end date: March 18 2024`
