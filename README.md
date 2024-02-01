@@ -62,5 +62,8 @@ for the upcoming Research Contest held by my university
 - Feb 1:
   - Continue reading [Denmune](<paper/papers to research/2021_DenMune Density peak based clustering using mutual nearest neighbors.pdf>) `Finished`
   - Test DenMune code `Failed - can't install ngt package`
+  - Learn LaTeX commands
+- Feb 2:
+  - Read [DP-DSets-DBSCAN](<paper/papers to research/2023_Towards Parameter-free Clustering for Real-world Data.pdf>)
 
 `Expected end date: March 18 2024`
