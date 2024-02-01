@@ -59,6 +59,7 @@ for the upcoming Research Contest held by my university
   - Reorganize code and files
 - Jan 31:
   - Read [Denmune](<paper/papers to research/2021_DenMune Density peak based clustering using mutual nearest neighbors.pdf>)
-
+- Feb 1:
+  - Continue reading [Denmune](<paper/papers to research/2021_DenMune Density peak based clustering using mutual nearest neighbors.pdf>) 
 
 `Expected end date: March 18 2024`
