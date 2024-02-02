@@ -20,7 +20,7 @@ for the upcoming Research Contest held by my university
   - Set up environment in vscode `Failed`
   - Currently using **Texmaker** and [Overleaf](https://www.overleaf.com/project) instead
   - Learning LaTeX commands
-    - [LaTeX – Full Tutorial for Beginners](https://www.youtube.com/watch?v=ydOTMQC7np0&ab_channel=freeCodeCamp.org) (extremely low-paced)
+    - [LaTeX – Full Tutorial for Beginners](https://www.youtube.com/watch?v=ydOTMQC7np0&ab_channel=freeCodeCamp.org) (low-paced)
     - [Learn LaTeX in 30 minutes](https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes) (self-paced)
   - Daily LaTeX practice is preferable to learning all commands at once because there are just too many things
 - Jan 23:
@@ -61,9 +61,10 @@ for the upcoming Research Contest held by my university
   - Read [Denmune](<paper/papers to research/2021_DenMune Density peak based clustering using mutual nearest neighbors.pdf>)
 - Feb 1:
   - Continue reading [Denmune](<paper/papers to research/2021_DenMune Density peak based clustering using mutual nearest neighbors.pdf>) `Finished`
-  - Test DenMune code `Failed - can't install ngt package`
+  - Test DenMune code `Failed - ngt package is only distributed for MacOS`
   - Learn LaTeX commands
 - Feb 2:
   - Read [DP-DSets-DBSCAN](<paper/papers to research/2023_Towards Parameter-free Clustering for Real-world Data.pdf>)
+  - Learn LaTeX commands
 
 `Expected end date: March 18 2024`
