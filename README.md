@@ -66,8 +66,8 @@ for the upcoming Research Contest held by my university
 - Feb 2:
   - Read [DP-DSets-DBSCAN](<paper/papers to research/2023_Towards Parameter-free Clustering for Real-world Data.pdf>)
   - Learn LaTeX commands
-- Feb 3:
-  - Continue reading [DP-DSets-DBSCAN](<paper/papers to research/2023_Towards Parameter-free Clustering for Real-world Data.pdf>)
+- Feb 4:
+  - Continue reading [DP-DSets-DBSCAN](<paper/papers to research/2023_Towards Parameter-free Clustering for Real-world Data.pdf>) `Finished`
   - Learn LaTeX commands
   - Write LaTeX code for Hi-Lassie
 
