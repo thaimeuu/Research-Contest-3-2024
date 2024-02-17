@@ -50,7 +50,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 # from pandas._libs.lib import fast_unique_multiple_list_gen
 import seaborn as sns
-import ngtpy
+# import ngtpy
 from anytree import Node
 from numpy import genfromtxt
 from sklearn.manifold import TSNE
@@ -226,8 +226,8 @@ class DenMune():
         self.KernelPoints = []
 
         self.init_DataPoints()
-        self.kd_NGT()
-        self.load_DataPoints()  # load_DataPoints must come after kd_NGT()
+        # self.kd_NGT()
+        # self.load_DataPoints()  # load_DataPoints must come after kd_NGT()
         self.compute_Links()
         # self.semi_init_DataPoints #it is useful with csharp and CNune only
         self.find_Noise()
@@ -240,25 +240,25 @@ class DenMune():
 
         return None  # __init__ should return None
 
-    def kd_NGT(self):
+    # def kd_NGT(self):
 
-        if len(self.dp_dis) == 0:
+    #     if len(self.dp_dis) == 0:
 
-            ngtpy.create(b"tmp", self.dp_dim)
-            index = ngtpy.Index(b"tmp")
-            index.batch_insert(self.data)
-            index.save()
+    #         ngtpy.create(b"tmp", self.dp_dim)
+    #         index = ngtpy.Index(b"tmp")
+    #         index.batch_insert(self.data)
+    #         index.save()
 
-            k = self.k_nearest
-            start = time.time()
-            self.dp_dis = []
-            for i in range(self.dp_count):
-                query = self.data[i]
-                result = index.search(query, k + 1)[1:]  # we skip first distance from a point to itself
-                self.dp_dis.append(result)
+    #         k = self.k_nearest
+    #         start = time.time()
+    #         self.dp_dis = []
+    #         for i in range(self.dp_count):
+    #             query = self.data[i]
+    #             result = index.search(query, k + 1)[1:]  # we skip first distance from a point to itself
+    #             self.dp_dis.append(result)
 
-            end = time.time()
-            self.analyzer["exec_time"]["NGT"] = end - start
+    #         end = time.time()
+    #         self.analyzer["exec_time"]["NGT"] = end - start
 
     def getValue(self, dic, what, who, other=False):
 
@@ -367,26 +367,26 @@ class DenMune():
         li.sort(key=lambda x: x[1], reverse=reverse)
         return li
 
-    def load_DataPoints(self):
+    # def load_DataPoints(self):
 
-        # initialize datapoints to its default values
-        self.init_DataPoints()
+    #     # initialize datapoints to its default values
+    #     self.init_DataPoints()
 
-        for i in range(self.dp_count):
-            result = self.dp_dis[i]
-            for k, o in enumerate(result):
-                # no need to this condition, it wont happen
-                #if k >= self.k_nearest:
-                #    break
+    #     for i in range(self.dp_count):
+    #         result = self.dp_dis[i]
+    #         for k, o in enumerate(result):
+    #             # no need to this condition, it wont happen
+    #             #if k >= self.k_nearest:
+    #             #    break
 
-                # if k != 0:
-                _dis = round(o[1], 6)
-                _point = o[0]
+    #             # if k != 0:
+    #             _dis = round(o[1], 6)
+    #             _point = o[0]
 
-                self.DataPoints[i].refer_to.append([_point, _dis])
-                self.DataPoints[_point].referred_by.append([i, _dis])
+    #             self.DataPoints[i].refer_to.append([_point, _dis])
+    #             self.DataPoints[_point].referred_by.append([i, _dis])
 
-        return 0
+    #     return 0
 
     def prepare_Clusters(self):
         start = time.time()
