@@ -68,7 +68,7 @@ for the upcoming Research Contest held by my university
   - Learn LaTeX commands
 - Feb 4:
   - Continue reading [DP-DSets-DBSCAN](<paper/papers to research/2023_Towards Parameter-free Clustering for Real-world Data.pdf>) `Finished`
-  - Learn LaTeX commands
-  - Write LaTeX code for Hi-Lassie
+- Feb 17:
+  - Run [Denmune](<paper/papers to research/2021_DenMune Density peak based clustering using mutual nearest neighbors.pdf>) code `Done - Failed due to ngtpy`
 
 `Expected end date: March 18 2024`
