@@ -1,6 +1,8 @@
 %This is the code of the DSet-DP algorithm proposed in
 %Jian Hou, Huaqiang Yuan, Marcello Pelillo. Towards Parameter-Free Clustering for Real-World Data. Pattern Recognition, vol. 134, 2023.
 
+% the original code was modified by Le Cong Hieu
+% This version is modified by me (comment out Hieu's code and add new code)
 
 function demo_dsetdp()
     path = "D:\pix2pixHD\code khang\classfication\data\gt";
@@ -12,14 +14,14 @@ function demo_dsetdp()
     FileName=cellstr(allNames);
     
     %I0 = imread('F:\CRACK\skelaton\DBscan_OPTICS\skeleton_hcn_5x5\1079.png');
-    H = [];
+    H=[];
    
     flag_tsne=1;
     nsample=0.036;
     th_std=0.1;
     pr=[]
     rc=[]
-    f11 =[]
+    f11=[]
     
     for k = 1:length(FileName)
         val_name_temp = FileName{k}
@@ -42,9 +44,9 @@ function demo_dsetdp()
         imwrite(img_out_noslid,path_save)
         
     end
-    
-    
+
 end
+
 function nearest_point = find_nearest_point(points)
     % tính tâm c?a các ?i?m
     center = mean(points);
@@ -76,6 +78,7 @@ end
 
 function [precision, recall, f1] = calculate_metrics(ground_truth, predicted_image)
     % Chuy?n ??i ?nh sang d?ng nh? phân (binary) n?u c?n thi?t
+    % thai: convert to binary image if needed
     ground_truth=rgb2gray(ground_truth);
     gt_cp = zeros(size(ground_truth));
     gt_cp(ground_truth == 76) = 1;
