@@ -70,5 +70,7 @@ for the upcoming Research Contest held by my university
   - Continue reading [DP-DSets-DBSCAN](<paper/papers to research/2023_Towards Parameter-free Clustering for Real-world Data.pdf>) `Finished`
 - Feb 17:
   - Run [Denmune](<paper/papers to research/2021_DenMune Density peak based clustering using mutual nearest neighbors.pdf>) code `Done - Failed due to ngtpy`
+- Feb 18:
+  - Run [DP-DSets-DBSCAN](<paper/papers to research/2023_Towards Parameter-free Clustering for Real-world Data.pdf>) code `Not done`
 
 `Expected end date: March 18 2024`
