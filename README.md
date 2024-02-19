@@ -72,5 +72,8 @@ for the upcoming Research Contest held by my university
   - Run [Denmune](<paper/papers to research/2021_DenMune Density peak based clustering using mutual nearest neighbors.pdf>) code `Done - Failed due to ngtpy`
 - Feb 18:
   - Run [DP-DSets-DBSCAN](<paper/papers to research/2023_Towards Parameter-free Clustering for Real-world Data.pdf>) code `Not done`
+- Feb 19:
+  - Reread DP-Dsets-DBSCAN paper carefully
+  - Read DP-Dsets-DBSCAN code and try running
 
 `Expected end date: March 18 2024`
