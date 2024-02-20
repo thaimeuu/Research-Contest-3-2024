@@ -1,12 +1,17 @@
-%This is the code of the DSet-DP algorithm proposed in
-%Jian Hou, Huaqiang Yuan, Marcello Pelillo. Towards Parameter-Free Clustering for Real-World Data. Pattern Recognition, vol. 134, 2023.
+% This is the code of the DSet-DP algorithm proposed in
+% Jian Hou, Huaqiang Yuan, Marcello Pelillo. Towards Parameter-Free Clustering for Real-World Data. Pattern Recognition, vol. 134, 2023.
 
 % the original code was modified by Le Cong Hieu
 % This version is modified by me (comment out Hieu's code and add new code)
 
 function demo_dsetdp()
-    path = "D:\pix2pixHD\code khang\classfication\data\gt";
-    path_gt = "D:\pix2pixHD\code khang\classfication\data\seg";
+%     path="D:\pix2pixHD\code khang\classfication\data\gt";
+%     path_gt="D:\pix2pixHD\code khang\classfication\data\seg";
+
+% try running the code belows inside command window line by line for visualization
+    path="D:\HRG\Crack-Detection\ground_truth";
+    path_gt="D:\HRG\Crack-Detection\segmentation";
+
     addpath(path);
     allFiles=dir(path);
     allNames={allFiles.name};
@@ -17,44 +22,55 @@ function demo_dsetdp()
     H=[];
    
     flag_tsne=1;
-    nsample=0.036;
-    th_std=0.1;
-    pr=[]
-    rc=[]
-    f11=[]
+    nsample=0.036;  % epsilon=3.6
+    th_std=0.1;  % STD=0.1
+    pr=[];  % precision
+    rc=[];  % recall
+    f11=[];  % f1
     
-    for k = 1:length(FileName)
-        val_name_temp = FileName{k}
-        val_name_temp1 = fullfile(path,val_name_temp);
-        val_name_temp_gt = fullfile(path_gt,val_name_temp);
+    % for k = 1:length(FileName)
+    for k=1:1
+        val_name_temp = FileName{k};  % '0002-2.png'
+        val_name_temp1 = fullfile(path,val_name_temp);  % "D:\HRG\Crack-Detection\ground_truth\0002-2.png"
+        val_name_temp_gt = fullfile(path_gt,val_name_temp);  % "D:\HRG\Crack-Detection\segmentation\0002-2.png"
         img = imread(val_name_temp1);
         ground_truth = imread(val_name_temp_gt);
         
-        [x,y] = find(img>0);
-        point_crack=[x,y];
-        descr=[x y];
-        [rate_nmi,rate_acc,label_c]=dset_dp_auto(descr,nsample,th_std,flag_tsne);
+        [x,y] = find(img>0);  % x.shape, y.shape = (n, 1)
+        point_crack = [x,y];  % point_crack.shape = (n, 2)
+        descr=[x,y];
+
+        % nmi, accuracy
+        [rate_nmi,rate_acc,label_c] = dset_dp_auto(descr,nsample,th_std,flag_tsne);
+
+        % create a grouped scatterplot, each group has a color
         gscatter(descr(:,1),descr(:,2),label_c);
+
         img_out_noslid = cover_label_point_nearest(img, label_c, point_crack, 'img');
-       
-        
-       
+      
         new_matrix = slidingWindowDensity(img,label_c);
-        path_save = fullfile("D:\pix2pixHD\clasfication_alg\data\image_DsetDP1\",val_name_temp);
+        % path_save = fullfile("D:\pix2pixHD\clasfication_alg\data\image_DsetDP1\",val_name_temp);
+        path_save = fullfile("D:\HRG\SVNCKH 3-2024\code availability\DSet-DP\dp-dsets-result-thaimeuu",val_name_temp);
+
         imwrite(img_out_noslid,path_save)
+
+%         predicted_image = imread("D:\HRG\SVNCKH 3-2024\code availability\DSet-DP\imgwtf.png");
+%         [precision, recall, f1] = calculate_metrics(ground_truth, predicted_image)
         
     end
 
 end
 
 function nearest_point = find_nearest_point(points)
-    % tính tâm c?a các ?i?m
+    % returns nearest point from points' center.
+
+    % center's coordinate
     center = mean(points);
     
-    % tính kho?ng cách t? tâm ??n các ?i?m
+    % distances from points to center
     distances = sqrt(sum((points - center).^2, 2));
     
-    % tìm và tr? v? ?i?m g?n tâm nh?t
+    % returns nearest point
     [~, nearest_index] = min(distances);
     nearest_point = points(nearest_index, :);
 end
@@ -65,38 +81,46 @@ function img_out_noslid = cover_label_point_nearest(img, labels, point_crack, na
     point = unique(labels);
     img_out_noslid = zeros(size(img));
     hold on;
+
     for i = 1:numel(point)
         cluster_i = point_crack(labels == point(i), :);
         index_center = find_nearest_point(cluster_i);
         scatter(index_center(2), index_center(1), 5, 'red', 'filled');
         img_out_noslid(index_center(1), index_center(2), :) = 1;
     end
+
     hold off;
-    saveas(gcf, [name, '_slineding.png'], 'png');
+    % saveas(gcf, [name, '_slineding.png'], 'png');
+    saveas(gcf, [name, 'thai-test.png'], 'png');
     close;
 end
 
 function [precision, recall, f1] = calculate_metrics(ground_truth, predicted_image)
-    % Chuy?n ??i ?nh sang d?ng nh? phân (binary) n?u c?n thi?t
-    % thai: convert to binary image if needed
+    % convert to binary image if needed
     ground_truth=rgb2gray(ground_truth);
     gt_cp = zeros(size(ground_truth));
+
+    % red dot's gray value = 76.245
     gt_cp(ground_truth == 76) = 1;
+
+    % labeling connected components in a binary image
     labels = bwlabel(gt_cp);
     numclasses = (unique(labels));
     gt_cp = zeros(size(ground_truth));
     for k = 1:numclasses
         [x,y]= find(labels == k);
-        point_crack =[x,y]
+        point_crack=[x,y]
         %gt_cp(round(mean(point_crack(:,1))), round(mean(point_crack(:,2)))) = 1;
+
+        % cluster center
         gt_cp(round(mean(point_crack(:,2))), round(mean(point_crack(:,1))))=1;
     end
 
-
     gtBinary = imbinarize(gt_cp);
-    
+
     segBinary = imbinarize(predicted_image);
-    unique(segBinary)
+    unique(segBinary);
+
    % Calculate true positives, false positives, and false negatives
     truePositives = sum(gtBinary(:) & segBinary(:))
     falsePositives = sum(~gtBinary(:) & segBinary(:))
@@ -142,12 +166,13 @@ function [F, pr, rc] = Accuracy1(GT, seg)
 end
 
 function new_matrix = slidingWindowDensity(image,label)
-% Tính density trên ?nh b?ng ph??ng pháp sliding windows 3x3 v?i v? trí trung tâm sliding ph?i có giá tr?
+% Tính density trên anh bang phuong pháp sliding windows 3x3 voi vi trí 
+% trung tâm sliding ph?i có giá tr?
 % Inputs:
-%   - image: ?nh ??u vào, có th? là ?nh RGB ho?c grayscale
+%   - image: anh dau vào, có the là anh RGB hoac grayscale
 %   - centerVal: giá tr? c?a pixel t?i v? trí trung tâm sliding
 % Outputs:
-%   - density: ma tr?n density ?ng v?i t?ng v? trí sliding trên ?nh ??u vào
+%   - density: ma tran density ?ng v?i t?ng v? trí sliding trên ?nh ??u vào
 
 % Chuy?n ??i ?nh sang grayscale n?u là ?nh RGB
 if size(image, 3) == 3
@@ -191,9 +216,9 @@ function [rate_nmi,rate_acc,label_c]=dset_dp_auto(descr,nsample,th_std,flag_tsne
     rate_acc=zeros(1,ndataset);
     
     
-%         img = imread("D:\pix2pixHD\code khang\classfication\data\gt\0002-2.png");
-%         [x,y] = find(img>0);
-%         descr=[x y];
+    % img = imread("D:\pix2pixHD\code khang\classfication\data\gt\0002-2.png");
+    % [x,y] = find(img>0);
+    % descr=[x y];
         %[descr label_t]=clusterdata_load(i,flag_tsne);
         %build sima
         dima0=pdist(descr,'euclidean');
