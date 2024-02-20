@@ -74,6 +74,8 @@ for the upcoming Research Contest held by my university
   - Run [DP-DSets-DBSCAN](<paper/papers to research/2023_Towards Parameter-free Clustering for Real-world Data.pdf>) code `Not done`
 - Feb 19:
   - Reread DP-Dsets-DBSCAN paper carefully
+- Feb 20:
+  - Reread DP-Dsets-DBSCAN paper carefully
   - Read DP-Dsets-DBSCAN code and try running
 
 `Expected end date: March 18 2024`
