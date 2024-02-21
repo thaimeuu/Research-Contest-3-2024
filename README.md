@@ -77,5 +77,8 @@ for the upcoming Research Contest held by my university
 - Feb 20:
   - Reread DP-Dsets-DBSCAN paper carefully
   - Read DP-Dsets-DBSCAN code and try running
+- Feb 21:
+  - Analyze and run DP-Dsets-DBSCAN code
+  - Read [HIAC](<paper/papers to research/2023_How to improve the accuracy of clustering algorithms.pdf>)
 
 `Expected end date: March 18 2024`
