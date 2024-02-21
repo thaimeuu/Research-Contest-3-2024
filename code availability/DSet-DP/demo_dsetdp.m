@@ -6,13 +6,17 @@
 
 function demo_dsetdp()
     % try running the code belows inside command window line by line for visualization
-    path="D:\HRG\Crack-Detection\ground_truth";
-    path_gt="D:\HRG\Crack-Detection\segmentation";
+    % path="D:\HRG\Crack-Detection\ground_truth";
+    % path_gt="D:\HRG\Crack-Detection\segmentation";
+
+    % rice panicle
+    path = "D:\HRG\SVNCKH 3-2024\skeleton_dataset";
 
     addpath(path);
     allFiles=dir(path);
     allNames={allFiles.name};
     allNames(1:2)=[];
+    allNames(end)=[];
     FileName=cellstr(allNames);
     
     %I0 = imread('F:\CRACK\skelaton\DBscan_OPTICS\skeleton_hcn_5x5\1079.png');
@@ -26,34 +30,41 @@ function demo_dsetdp()
     f11=[];  % f1
     
     for k = 1:length(FileName)
+    % for k = 1:1
         val_name_temp = FileName{k};  % '0002-2.png'
         val_name_temp1 = fullfile(path,val_name_temp);  % "D:\HRG\Crack-Detection\ground_truth\0002-2.png"
-        val_name_temp_gt = fullfile(path_gt,val_name_temp);  % "D:\HRG\Crack-Detection\segmentation\0002-2.png"
+        % val_name_temp_gt = fullfile(path_gt,val_name_temp);  % "D:\HRG\Crack-Detection\segmentation\0002-2.png"
         
         % img is an image that needs clustering
         % ground_truth is used for accuracy quantification
+
+        % crack detection
+        % img = imread(val_name_temp1);
+        % ground_truth = imread(val_name_temp_gt);
+
+        % panicle image
         img = imread(val_name_temp1);
-        ground_truth = imread(val_name_temp_gt);
         
         [x,y] = find(img>0);  % x.shape, y.shape = (n, 1), (n, 1)
         point_crack = [x,y];  % point_crack.shape = (n, 2)
         descr=[x,y];
 
         % nmi, accuracy
-        [rate_nmi,rate_acc,label_c] = dset_dp_auto(descr,nsample,th_std,flag_tsne);
+        [~,~,label_c] = dset_dp_auto(descr,nsample,th_std,flag_tsne);
 
         % create a grouped scatterplot, each group has a color
-        gscatter(descr(:,1),descr(:,2),label_c);
+        % gscatter(descr(:,1),descr(:,2),label_c);
 
-        img_out_noslid = cover_label_point_nearest(img, label_c, point_crack, 'img');
+        % img_out_noslid contains a list of cluster centers
+        img_out_noslid = cover_label_point_nearest(img, label_c, point_crack, val_name_temp);
       
-        new_matrix = slidingWindowDensity(img,label_c);
+        %new_matrix = slidingWindowDensity(img,label_c);
 
-        path_save = fullfile("D:\HRG\SVNCKH 3-2024\code availability\DSet-DP\dp-dsets-result-thaimeuu",val_name_temp);
-        imwrite(img_out_noslid,path_save)
+        %path_save = fullfile("D:\HRG\SVNCKH 3-2024\code availability\DSet-DP\dp-dsets-result-thaimeuu",val_name_temp);
+        %imwrite(img_out_noslid,path_save)
 
-        % predicted_image = imread("D:\HRG\SVNCKH 3-2024\code availability\DSet-DP\imgwtf.png");
-        % [precision, recall, f1] = calculate_metrics(ground_truth, predicted_image)
+        % predicted_image = imread("D:\HRG\SVNCKH 3-2024\code availability\DSet-DP\clustered.png");
+        % [precision, recall, f1] = calculate_metrics(ground_truth, predicted_image);
         
     end
 
@@ -84,18 +95,20 @@ function img_out_noslid = cover_label_point_nearest(img, labels, point_crack, na
         cluster_i = point_crack(labels == point(i), :);
         index_center = find_nearest_point(cluster_i);
         scatter(index_center(2), index_center(1), 5, 'red', 'filled');
-        img_out_noslid(index_center(1), index_center(2), :) = 1;
+        img_out_noslid(index_center(1), index_center(2)) = 1;
     end
 
     hold off;
-    % saveas(gcf, [name, '_slineding.png'], 'png');
-    saveas(gcf, [name, 'thai-test.png'], 'png');
-    close;
+
+    saveas(gcf, ['D:\HRG\SVNCKH 3-2024\clustered_skeleton\DP-Dsets\', name, '.png'], 'png');
+
+
 end
 
 function [precision, recall, f1] = calculate_metrics(ground_truth, predicted_image)
     % convert to binary image if needed
     ground_truth=rgb2gray(ground_truth);
+    predicted_image=rgb2gray(predicted_image);
     gt_cp = zeros(size(ground_truth));
 
     % red dot's gray value = 76.245
@@ -115,9 +128,12 @@ function [precision, recall, f1] = calculate_metrics(ground_truth, predicted_ima
     end
 
     gtBinary = imbinarize(gt_cp);
+    size(gtBinary)
+%     imshow(gtBinary)
 
     segBinary = imbinarize(predicted_image);
-    unique(segBinary);
+    size(segBinary)
+%     imshow(segBinary)
 
    % Calculate true positives, false positives, and false negatives
     truePositives = sum(gtBinary(:) & segBinary(:))
@@ -141,6 +157,7 @@ function [F, pr, rc] = Accuracy1(GT, seg)
     seg(seg > 0) = 1;
     seg = seg(:);
     
+    % compute the confusion matrix given the true labels and predicted labels.
     CM = confusionmat(GT, seg);
     c = size(CM);
     
