@@ -5,10 +5,7 @@
 % This version is modified by me (comment out Hieu's code and add new code)
 
 function demo_dsetdp()
-%     path="D:\pix2pixHD\code khang\classfication\data\gt";
-%     path_gt="D:\pix2pixHD\code khang\classfication\data\seg";
-
-% try running the code belows inside command window line by line for visualization
+    % try running the code belows inside command window line by line for visualization
     path="D:\HRG\Crack-Detection\ground_truth";
     path_gt="D:\HRG\Crack-Detection\segmentation";
 
@@ -22,21 +19,23 @@ function demo_dsetdp()
     H=[];
    
     flag_tsne=1;
-    nsample=0.036;  % epsilon=3.6
+    nsample=0.036;  % epsilon=3.6%
     th_std=0.1;  % STD=0.1
     pr=[];  % precision
     rc=[];  % recall
     f11=[];  % f1
     
-    % for k = 1:length(FileName)
-    for k=1:1
+    for k = 1:length(FileName)
         val_name_temp = FileName{k};  % '0002-2.png'
         val_name_temp1 = fullfile(path,val_name_temp);  % "D:\HRG\Crack-Detection\ground_truth\0002-2.png"
         val_name_temp_gt = fullfile(path_gt,val_name_temp);  % "D:\HRG\Crack-Detection\segmentation\0002-2.png"
+        
+        % img is an image that needs clustering
+        % ground_truth is used for accuracy quantification
         img = imread(val_name_temp1);
         ground_truth = imread(val_name_temp_gt);
         
-        [x,y] = find(img>0);  % x.shape, y.shape = (n, 1)
+        [x,y] = find(img>0);  % x.shape, y.shape = (n, 1), (n, 1)
         point_crack = [x,y];  % point_crack.shape = (n, 2)
         descr=[x,y];
 
@@ -49,13 +48,12 @@ function demo_dsetdp()
         img_out_noslid = cover_label_point_nearest(img, label_c, point_crack, 'img');
       
         new_matrix = slidingWindowDensity(img,label_c);
-        % path_save = fullfile("D:\pix2pixHD\clasfication_alg\data\image_DsetDP1\",val_name_temp);
-        path_save = fullfile("D:\HRG\SVNCKH 3-2024\code availability\DSet-DP\dp-dsets-result-thaimeuu",val_name_temp);
 
+        path_save = fullfile("D:\HRG\SVNCKH 3-2024\code availability\DSet-DP\dp-dsets-result-thaimeuu",val_name_temp);
         imwrite(img_out_noslid,path_save)
 
-%         predicted_image = imread("D:\HRG\SVNCKH 3-2024\code availability\DSet-DP\imgwtf.png");
-%         [precision, recall, f1] = calculate_metrics(ground_truth, predicted_image)
+        % predicted_image = imread("D:\HRG\SVNCKH 3-2024\code availability\DSet-DP\imgwtf.png");
+        % [precision, recall, f1] = calculate_metrics(ground_truth, predicted_image)
         
     end
 
