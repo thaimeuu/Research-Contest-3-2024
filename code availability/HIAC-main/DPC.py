@@ -6,6 +6,8 @@ Created on Wed Jan  5 10:04:22 2022
 """
 '''
 DPC算法，返回聚类的结果
+
+DPC algorithm, returns clustering results
 '''
 import numpy as np
 import math
@@ -29,7 +31,7 @@ def DPC(data, k):
     np.savetxt("./seeds_dis.txt", saveDate)
     '''
     area = sda[round(sda.shape[0]*ratio/100) - 1]
-    # 求密度(剪切密度)
+    # 求密度(剪切密度) -> Find density (shear density)
     density = np.zeros(Num, dtype=np.int32)
     for i in range(Num-1):
         for j in range(i+1, Num):
@@ -54,7 +56,7 @@ def DPC(data, k):
     #print("\ndensity\n", density[:100], "\ndelta\n", delta[:100], "\ngamma\n", gamma[:100], "\nnneigh\n", nneigh[:100])
     #print("\ndensity_index\n", density_index[:100])
     gamma_index = np.argsort(-gamma, kind='stable')
-    cluster = gamma_index[:k]#簇心的序号
+    cluster = gamma_index[:k]#簇心的序号 -> The serial number of the cluster center
     cl = np.ones(Num, dtype=np.int32)
     cl *= -1
     icl = np.ones(cluster.shape[0]+1, dtype=np.int32)
@@ -65,7 +67,7 @@ def DPC(data, k):
     for i in range(cluster.shape[0]):
         Num_cluster = Num_cluster + 1
         cl[gamma_index[i]] = Num_cluster
-        icl[Num_cluster] = gamma_index[i]#第Num_cluster个簇的簇心是i
+        icl[Num_cluster] = gamma_index[i]#第Num_cluster个簇的簇心是i -> The cluster center of the Num_cluster cluster is i
     #print("\ncl\n", cl[:100])
 
     for i in range(Num):
