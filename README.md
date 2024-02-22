@@ -71,7 +71,7 @@ for the upcoming Research Contest held by my university
 - Feb 17:
   - Run [Denmune](<paper/papers to research/2021_DenMune Density peak based clustering using mutual nearest neighbors.pdf>) code `Done - Failed due to ngtpy`
 - Feb 18:
-  - Run [DP-DSets-DBSCAN](<paper/papers to research/2023_Towards Parameter-free Clustering for Real-world Data.pdf>) code `Not done`
+  - Run [DP-DSets-DBSCAN](<paper/papers to research/2023_Towards Parameter-free Clustering for Real-world Data.pdf>) code
 - Feb 19:
   - Reread DP-Dsets-DBSCAN paper carefully
 - Feb 20:
@@ -81,5 +81,8 @@ for the upcoming Research Contest held by my university
   - Analyze and run DP-Dsets-DBSCAN code
 - Feb 22:
   - Read [HIAC](<paper/papers to research/2023_How to improve the accuracy of clustering algorithms.pdf>)
-
+- Feb 23:
+  - Analyze and run [HIAC code](<code availability/HIAC-main/HIAC.py>)
+  - Analyze and run [DPC code in python](<code availability/HIAC-main/DPC.py>)
+  
 `Expected end date: March 18 2024`
