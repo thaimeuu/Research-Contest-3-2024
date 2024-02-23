@@ -27,7 +27,7 @@ num = 1
 
 
 def Plot(data, labels, title):
-    '''
+    """
 
     Parameters
     ----------
@@ -38,16 +38,31 @@ def Plot(data, labels, title):
     Returns: the clustering graph
     -------
 
-    '''
+    """
     global num
     global photoPath
     plt.figure(num)
     num += 1
     sortNumMax = np.max(labels)
     sortNumMin = np.min(labels)
-    color = ['#125B50', '#4D96FF', '#FFD93D', '#FF6363', '#CE49BF', '#22577E', '#4700D8', '#F900DF', '#95CD41',
-             '#FF5F00', '#40DFEF', '#8E3200', '#001E6C', '#C36A2D', '#B91646']
-    lineform = ['o']
+    color = [
+        "#125B50",
+        "#4D96FF",
+        "#FFD93D",
+        "#FF6363",
+        "#CE49BF",
+        "#22577E",
+        "#4700D8",
+        "#F900DF",
+        "#95CD41",
+        "#FF5F00",
+        "#40DFEF",
+        "#8E3200",
+        "#001E6C",
+        "#C36A2D",
+        "#B91646",
+    ]
+    lineform = ["o"]
     for i in range(sortNumMin, sortNumMax + 1):
         Together = []
         flag = 0
@@ -60,16 +75,18 @@ def Plot(data, labels, title):
         fontSize = 15
         colorNum = (i - sortNumMin) % len(color)
         formNum = 0
-        plt.scatter(Together[:, 0], Together[:, 1], fontSize, color[colorNum], lineform[formNum])
+        plt.scatter(
+            Together[:, 0], Together[:, 1], fontSize, color[colorNum], lineform[formNum]
+        )
     plt.ticklabel_format(axis="x", style="sci", scilimits=(0, 0))
     plt.ticklabel_format(axis="y", style="sci", scilimits=(0, 0))
     plt.title(title, fontsize=20)
-    plt.savefig(photoPath, dpi=300, bbox_inches='tight')
+    plt.savefig(photoPath, dpi=300, bbox_inches="tight")
     plt.show()
 
 
 def TGP(data, k, photo_path, threshold):
-    '''
+    """
 
     Parameters
     ----------
@@ -81,7 +98,7 @@ def TGP(data, k, photo_path, threshold):
     Returns:the edge weight matrix that record the edge weight of each object i and its k-nearest-neighbors
     -------
 
-    '''
+    """
     global num
     pointNum = data.shape[0]
     probability = np.zeros([int(pointNum / 10), 2])
@@ -89,13 +106,21 @@ def TGP(data, k, photo_path, threshold):
     distance_matrix = -dis.squareform(distance) + np.max(distance)
     distance_sort = -np.sort(-distance_matrix, axis=1)
 
-    pointWeight = np.mean(distance_sort[:, 1:k + 1], axis=1)  # get point weight to replace edge weight
-    dc = (max(pointWeight) - min(pointWeight)) * 10 / pointNum  # get the length of each interval
+    pointWeight = np.mean(
+        distance_sort[:, 1 : k + 1], axis=1
+    )  # get point weight to replace edge weight
+    dc = (
+        (max(pointWeight) - min(pointWeight)) * 10 / pointNum
+    )  # get the length of each interval
     for i in range(probability.shape[0]):  # for each interval
         location = min(pointWeight) + dc * i  # get the start position of each interval
-        probability[i, 0] = location  # the start position is recorded at probability[:, 0]
+        probability[i, 0] = (
+            location  # the start position is recorded at probability[:, 0]
+        )
     for i in range(pointNum):  # for each object
-        j = (int)((pointWeight[i] - min(pointWeight)) / dc)  # for each object, calculate the interval to which it belongs
+        j = (int)(
+            (pointWeight[i] - min(pointWeight)) / dc
+        )  # for each object, calculate the interval to which it belongs
         if j < int(pointNum / 10):
             probability[j, 1] += 1
     probability[:, 1] = probability[:, 1] / pointNum
@@ -104,15 +129,16 @@ def TGP(data, k, photo_path, threshold):
     num += 1
     plt.plot(probability[:, 0], probability[:, 1])
     plt.axvline(x=threshold, c="r", ls="--", lw=1.5)
-    plt.title('Decision graph', fontstyle='italic', size=20)
-    plt.xlabel('wight', fontsize=20)
-    plt.ylabel('probability', fontsize=20)
+    plt.title("Decision graph", fontstyle="italic", size=20)
+    plt.xlabel("wight", fontsize=20)
+    plt.ylabel("probability", fontsize=20)
     plt.savefig(photo_path, dpi=300)
     plt.show()
     return distance_sort
 
+
 def prune(data, knn, threshold, distanceTGP):
-    '''
+    """
 
     Parameters
     ----------
@@ -124,7 +150,7 @@ def prune(data, knn, threshold, distanceTGP):
     Returns: the index matrix which records the valid-neighbors index of object i
     -------
 
-    '''
+    """
     pointNum = data.shape[0]
     distance = dis.pdist(data)
     distance_matrix = dis.squareform(distance)
@@ -134,7 +160,7 @@ def prune(data, knn, threshold, distanceTGP):
     density = np.zeros(pointNum)
     for i in range(pointNum):
         num = 1
-        while (distance_sort[i, num] < area):
+        while distance_sort[i, num] < area:
             num += 1
         density[i] = num
     densityThreshold = np.mean(density)  # we didn't move objects that have high density
@@ -149,8 +175,9 @@ def prune(data, knn, threshold, distanceTGP):
                         disIndex[i][j] = -1
     return disIndex
 
+
 def shrink(data, knn, T, disIndex):
-    '''
+    """
 
     Parameters
     ----------
@@ -163,7 +190,7 @@ def shrink(data, knn, T, disIndex):
     Returns:dataset after ameliorating
     -------
 
-    '''
+    """
     bata = data.copy()
     pointNum = data.shape[0]
     distance = dis.pdist(data)
@@ -175,7 +202,7 @@ def shrink(data, knn, T, disIndex):
     # calculate density of each object
     for i in range(pointNum):
         num = 1
-        while (distance_sort[i, num] < area):
+        while distance_sort[i, num] < area:
             num += 1
         density[i] = num
     densityThreshold = np.mean(density)
@@ -183,7 +210,9 @@ def shrink(data, knn, T, disIndex):
 
     # move the objects to ameliorate the dataset
     for i in range(pointNum):  # for each object
-        if density[i] < densityThreshold:  # we didn't move objects that have high density
+        if (
+            density[i] < densityThreshold
+        ):  # we didn't move objects that have high density
             displacement = np.zeros(data.shape[1], dtype=np.float32)
 
             # calculate graduation pull of all valid neighbours on current object i, and then calculate the displacement of current object i.
@@ -192,30 +221,39 @@ def shrink(data, knn, T, disIndex):
                     continue
                 else:
                     if disIndex[i][j] != -1:
-                        ff = (data[disIndex[i][j]] - data[i])
-                        fff = (distance_sort[i, 1] / (
-                                    distance_matrix[i, disIndex[i, j]] * distance_matrix[i, disIndex[i, j]]))
+                        ff = data[disIndex[i][j]] - data[i]
+                        fff = distance_sort[i, 1] / (
+                            distance_matrix[i, disIndex[i, j]]
+                            * distance_matrix[i, disIndex[i, j]]
+                        )
                         displacement += G * ff * fff
             bata[i] = data[i] + displacement * T  # object after moving
     return bata
 
+
 if __name__ == "__main__":
-    ######################initialization and parameter config#################################
+    # initialization and parameter config
     global photoPath
-    filePath = "data-sets/real-datasets/wifi_localization.txt"# the path of dataset
-    file_name, _ = filePath.split("/")[-1].split(".")# get file name
-    labelPath = ""# the path of labels of dataset (if txt file dose not contains labels)
-    save_dir = os.path.join(".", file_name)# make new idr to save files
+    filePath = "data-sets/real-datasets/wifi_localization.txt"  # the path of dataset
+    file_name, _ = filePath.split("/")[-1].split(".")  # get file name
+    labelPath = (
+        ""  # the path of labels of dataset (if txt file dose not contains labels)
+    )
+    save_dir = os.path.join(".", file_name)  # make new idr to save files
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
-    with_label = True# Whether the txt file contains both data and labels, if that, the labels must be in the last column
-    k = 6# the number of nearest neighbors, parameter k in HIAC
-    T = 0.3# parameter T in HIAC
-    d = 4# the d in paper HIAC
-    threshold = 1.514# the weight threshold to clip invalid-neighbors
-    pca = dec.PCA(n_components=2) # High-dimensional data are displayed using PCA dimensionality reduction methods
 
-    #####################read data and label#################
+    with_label = True  # Whether the txt file contains both data and labels, if that, the labels must be in the last column
+    k = 6  # the number of nearest neighbors, parameter k in HIAC
+    T = 0.3  # parameter T in HIAC
+    d = 4  # the d in paper HIAC
+    threshold = 1.514  # the weight threshold to clip invalid-neighbors
+
+    pca = dec.PCA(
+        n_components=2
+    )  # High-dimensional data are displayed using PCA dimensionality reduction methods
+
+    # read data and label
     data = np.loadtxt(filePath)
     if with_label:
         labels = data[:, -1]
@@ -223,10 +261,11 @@ if __name__ == "__main__":
         data = data[:, :-1]
     else:
         labels = np.loadtxt(labelPath, dtype=np.int32)
-    dim = data.shape[1]# the dimension of data
-    cluster_num = max(labels) - min(labels) + 1# the number of clusters
 
-    ########################normalization###################################
+    dim = data.shape[1]  # the dimension of data
+    cluster_num = max(labels) - min(labels) + 1  # the number of clusters
+
+    # normalization
     data_without_nml = data.copy()
     for j in range(data.shape[1]):
         max_ = max(data[:, j])
@@ -235,38 +274,39 @@ if __name__ == "__main__":
             continue
         for i in range(data.shape[0]):
             data[i][j] = (data[i][j] - min_) / (max_ - min_)
-    np.savetxt(os.path.join(save_dir, file_name + "_normalization.txt"), data)  #
 
-    ########################use PCA to reduce the dimension of the dataset, and visualization###################################
-    if dim > 2:# for high dimension dataset
+    np.savetxt(os.path.join(save_dir, file_name + "_normalization.txt"), data)
+
+    # use PCA to reduce the dimension of the dataset, and visualization
+    if dim > 2:  # for high dimension dataset
         dataPCA = pca.fit_transform(data)
         photoPath = os.path.join(save_dir, file_name + "_after_pca.png")
         Plot(dataPCA, labels, "original")
-    else:# for dataset has two dimensions
+    else:  # for dataset has two dimensions
         photoPath = os.path.join(save_dir, file_name + "_original.png")
         Plot(data, labels, "original")
 
-    ######################call HIAC##############################
-    photoPath = os.path.join(save_dir, "decision_" + str(k) + "_" + str(threshold) + ".png")# the path to save picture(decision-graph)
+    # call HIAC
+    photoPath = os.path.join(save_dir, "decision_" + str(k) + "_" + str(threshold) + ".png")  # the path to save picture (decision-graph)
     distanceTGP = TGP(data, k, photoPath, threshold)  # we can determine the threshold，and return the weight matrix
-    neighbor_index = prune(data, k, threshold, distanceTGP) # clip invalid-neighbors based on the weight threshold and the decision-graph,
-                                                            # and then return the index matrix which records the valid-neighbors index of object i
-                                                            # for object i, if j is invalid-neighbor of i, neighbor_index[i][j] = -1,
-                                                            # else neighbor_index[i][j] is the index of object j
-                                                            # its necessary for you to know that we only need K-nearest-neighbor of each object,
-                                                            # so,
+    neighbor_index = prune(data, k, threshold, distanceTGP)  # clip invalid-neighbors based on the weight threshold and the decision-graph,
+    # and then return the index matrix which records the valid-neighbors index of object i
+    # for object i, if j is invalid-neighbor of i, neighbor_index[i][j] = -1,
+    # else neighbor_index[i][j] is the index of object j
+    # its necessary for you to know that we only need K-nearest-neighbor of each object,
+    # so,
 
-    for i in range(d): # ameliorated the dataset by d time-segments
+    for i in range(d):  # ameliorated the dataset by d time-segments
         bata = shrink(data, k, T, neighbor_index)
         data = bata
-    np.savetxt(os.path.join(save_dir, file_name + '_ameliorated_by_HIAC.txt'), data)
-    
-    # call DPC to clustering, and calculate nmi by the interface:adjusted_mutual_info_score 
+    np.savetxt(os.path.join(save_dir, file_name + "_ameliorated_by_HIAC.txt"), data)
+
+    # call DPC to clustering, and calculate nmi by the interface:adjusted_mutual_info_score
     res = DPC(data, cluster_num)
-    nmi = metrics.adjusted_mutual_info_score(labels, res, average_method='max')
+    nmi = metrics.adjusted_mutual_info_score(labels, res, average_method="max")
     print("nmi:  ", nmi)
 
-    ########################use PCA to reduce the dimension of dataset after ameliorating, and visualization###################################
+    # use PCA to reduce the dimension of dataset after ameliorating, and visualization
     dataPCA = data.copy()
     if dim > 2:
         dataPCA = pca.fit_transform(data)
