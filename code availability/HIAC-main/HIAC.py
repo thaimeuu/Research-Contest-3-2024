@@ -235,9 +235,9 @@ if __name__ == "__main__":
     global photoPath
     filePath = "data-sets/real-datasets/wifi_localization.txt"  # the path of dataset
     file_name, _ = filePath.split("/")[-1].split(".")  # get file name
-    labelPath = (
-        ""  # the path of labels of dataset (if txt file dose not contains labels)
-    )
+    
+    # the path of labels of dataset (if txt file dose not contains labels)
+    labelPath = ""
     save_dir = os.path.join(".", file_name)  # make new idr to save files
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
@@ -248,9 +248,8 @@ if __name__ == "__main__":
     d = 4  # the d in paper HIAC
     threshold = 1.514  # the weight threshold to clip invalid-neighbors
 
-    pca = dec.PCA(
-        n_components=2
-    )  # High-dimensional data are displayed using PCA dimensionality reduction methods
+    # High-dimensional data are displayed using PCA dimensionality reduction methods
+    pca = dec.PCA(n_components=2)  
 
     # read data and label
     data = np.loadtxt(filePath)
