@@ -129,7 +129,7 @@ def TGP(data, k, photo_path, threshold):
     plt.plot(probability[:, 0], probability[:, 1])
     plt.axvline(x=threshold, c="r", ls="--", lw=1.5)
     plt.title("Decision graph", fontstyle="italic", size=20)
-    plt.xlabel("wight", fontsize=20)
+    plt.xlabel("weight", fontsize=20)
     plt.ylabel("probability", fontsize=20)
     plt.savefig(photo_path, dpi=300)
     plt.show()
