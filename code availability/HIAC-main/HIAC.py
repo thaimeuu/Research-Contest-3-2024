@@ -10,7 +10,6 @@ import numpy as np
 import pandas
 import scipy.spatial.distance as dis
 import matplotlib.pyplot as plt
-import matplotlib
 import sklearn.cluster as sc
 from sklearn import metrics
 from sklearn.datasets import load_iris
@@ -166,7 +165,7 @@ def prune(data, knn, threshold, distanceTGP):
     densityThreshold = np.mean(density)  # we didn't move objects that have high density
     for i in range(pointNum):
         if density[i] < densityThreshold:
-            for j in range(knn + 1):  # for k nearest neighbours
+            for j in range(knn + 1):  # for k nearest neighbors
                 if (data[disIndex[i][j]] == data[i]).all():
                     continue
                 else:
