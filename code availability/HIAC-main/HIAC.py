@@ -214,8 +214,8 @@ def shrink(data, knn, T, disIndex):
         ):  # we didn't move objects that have high density
             displacement = np.zeros(data.shape[1], dtype=np.float32)
 
-            # calculate graduation pull of all valid neighbours on current object i, and then calculate the displacement of current object i.
-            for j in range(knn + 1):  # for k nearest neighbours
+            # calculate graduation pull of all valid neighbors on current object i, and then calculate the displacement of current object i.
+            for j in range(knn + 1):  # for k nearest neighbors
                 if (data[disIndex[i][j]] == data[i]).all():  # if itself
                     continue
                 else:
@@ -233,7 +233,7 @@ def shrink(data, knn, T, disIndex):
 if __name__ == "__main__":
     # initialization and parameter config
     global photoPath
-    filePath = "data-sets/real-datasets/wifi_localization.txt"  # the path of dataset
+    filePath = "code availability/HIAC-main/data-sets/real-datasets/Wireless_indoor_location.txt"  # the path of dataset
     file_name, _ = filePath.split("/")[-1].split(".")  # get file name
     
     # the path of labels of dataset (if txt file dose not contains labels)
