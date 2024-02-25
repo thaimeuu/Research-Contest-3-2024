@@ -3,6 +3,8 @@
 Created on Wed Jan  5 10:04:22 2022
 
 @author: 佡儁
+
+@editor: thai (add decision graph, handle pairwise distance as an input)
 """
 """
 DPC算法，返回聚类的结果
@@ -12,6 +14,7 @@ DPC algorithm, returns clustering results
 import numpy as np
 import math
 import scipy.spatial.distance
+import matplotlib.pyplot as plt
 
 
 def DPC(data, k):
@@ -71,6 +74,7 @@ def DPC(data, k):
     delta[density_index[0]] = delta.max()
 
     gamma = density * delta
+
     # print("\ndensity\n", density[:100], "\ndelta\n", delta[:100], "\ngamma\n", gamma[:100], "\nnneigh\n", nneigh[:100])
     # print("\ndensity_index\n", density_index[:100])
     gamma_index = np.argsort(-gamma, kind="stable")
@@ -93,5 +97,11 @@ def DPC(data, k):
     for i in range(Num):
         if cl[density_index[i]] == -1:
             cl[density_index[i]] = cl[nneigh[density_index[i]]]
+
+    # plot decision graph
+    plt.scatter(np.arange(1, Num + 1), np.sort(gamma)[::-1])
+    plt.title("Decision graph")
+    plt.ylabel("gamma = rho * delta")
+    plt.show()
 
     return cl
