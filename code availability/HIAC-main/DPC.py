@@ -17,7 +17,7 @@ import scipy.spatial.distance
 import matplotlib.pyplot as plt
 
 
-def DPC(data, k):
+def DPC(data, k, ratio=2):
     """
     density peaks clustering
 
@@ -28,8 +28,6 @@ def DPC(data, k):
     Returns:
         cl: labels
     """
-
-    ratio = 2
 
     # in case input is already a pairwise distance list
     if data.shape[1] == 3 and abs(np.max(np.unique(data[:, 0])).astype('i') - np.max(np.unique(data[:, 1])).astype('i')) == 1:
