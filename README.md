@@ -83,6 +83,8 @@ for the upcoming Research Contest held by my university
   - Read [HIAC](<paper/papers to research/2023_How to improve the accuracy of clustering algorithms.pdf>)
 - Feb 23:
   - Analyze and run [HIAC code](<code availability/HIAC-main/HIAC.py>)
+- Feb 25:
   - Analyze and run [DPC code in python](<code availability/HIAC-main/DPC.py>)
+  - Run HIAC on rice panicle image.
   
 `Expected end date: March 18 2024`
