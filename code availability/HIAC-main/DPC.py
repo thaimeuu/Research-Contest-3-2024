@@ -15,11 +15,31 @@ import scipy.spatial.distance
 
 
 def DPC(data, k):
+    """
+    density peaks clustering
 
-    Num = data.shape[0]
+    Args:
+        data (ndarray (m, n)): data points
+        k (int): number of clusters
+
+    Returns:
+        cl: labels
+    """
+
     ratio = 2
-    # pairwise distance - pdist
-    distance = scipy.spatial.distance.pdist(data)
+
+    # in case input is already a pairwise distance list
+    if data.shape[1] == 3 and abs(np.max(np.unique(data[:, 0])).astype('i') - np.max(np.unique(data[:, 1])).astype('i')) == 1:
+        if len(np.unique(data[:, 0])) > len(np.unique(data[:, 1])):
+            Num = len(np.unique(data[:, 0]))
+        else:
+            Num = len(np.unique(data[:, 1]))
+        distance = data[:, 2]
+    else:
+        Num = data.shape[0]
+        # pairwise distance - pdist
+        distance = scipy.spatial.distance.pdist(data)
+
     # distance matrix
     dis_matrix = scipy.spatial.distance.squareform(distance)
     sda = np.sort(distance)
