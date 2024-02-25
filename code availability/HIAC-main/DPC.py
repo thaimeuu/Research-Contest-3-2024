@@ -12,7 +12,7 @@ contribution:
     - add ratio parameter
     - add kernel parameter (cutoff or gaussian)
     - handle pairwise distance as an input
-    - plot decision graph (gamma = rho * delta)
+    - add decision graph parameter (gamma = rho * delta)
     
 working on:
     - add noise feature
@@ -28,7 +28,7 @@ import scipy.spatial.distance
 import matplotlib.pyplot as plt
 
 
-def DPC(data, k, ratio=2, kernel="cutoff"):
+def DPC(data, k, ratio=2, kernel="cutoff", decision_graph=True):
     """
     density peaks clustering
 
@@ -118,9 +118,10 @@ def DPC(data, k, ratio=2, kernel="cutoff"):
             cl[density_index[i]] = cl[nneigh[density_index[i]]]
 
     # plot decision graph
-    plt.scatter(np.arange(1, Num + 1), np.sort(gamma)[::-1])
-    plt.title("Decision graph")
-    plt.ylabel("gamma = rho * delta")
-    plt.show()
+    if decision_graph:
+        plt.scatter(np.arange(1, Num + 1), np.sort(gamma)[::-1])
+        plt.title("Decision graph")
+        plt.ylabel("gamma = rho * delta")
+        plt.show()
 
     return cl
