@@ -4,7 +4,18 @@ Created on Wed Jan  5 10:04:22 2022
 
 @author: 佡儁
 
-@editor: thai (add decision graph, handle pairwise distance as an input)
+Edited on Feb 25 2024
+
+@editor: thai 
+
+contribution:
+    - add ratio parameter
+    - add kernel parameter (cutoff or gaussian)
+    - handle pairwise distance as an input
+    - plot decision graph (gamma = rho * delta)
+    
+working on:
+    - add noise feature
 """
 """
 DPC算法，返回聚类的结果
@@ -17,7 +28,7 @@ import scipy.spatial.distance
 import matplotlib.pyplot as plt
 
 
-def DPC(data, k, ratio=2):
+def DPC(data, k, ratio=2, kernel="cutoff"):
     """
     density peaks clustering
 
@@ -46,14 +57,24 @@ def DPC(data, k, ratio=2):
     sda = np.sort(distance)
 
     area = sda[round(sda.shape[0] * ratio / 100) - 1]  # calculate d_c
-    # Find density
-    density = np.zeros(Num, dtype=np.int32)
-    for i in range(Num - 1):
-        for j in range(i + 1, Num):
-            if dis_matrix[i, j] < area:
-                density[i] += 1
-                density[j] += 1
+    print(f"d_c = {area}")
 
+    # Find density (cutoff kernel)
+    if kernel == "cutoff":
+        density = np.zeros(Num, dtype=np.int32)
+        for i in range(Num - 1):
+            for j in range(i + 1, Num):
+                if dis_matrix[i, j] < area:
+                    density[i] += 1
+                    density[j] += 1
+    # Find density (gaussian kernel)
+    elif kernel == "gaussian" or kernel == "Gaussian":
+        density = np.zeros(Num, dtype=np.float64)
+        for i in range(Num - 1):
+            for j in range(i + 1, Num):
+                density[i] += np.exp(-((dis_matrix[i, j] / area) * (dis_matrix[i, j] / area)))
+                density[j] += np.exp(-((dis_matrix[i, j] / area) * (dis_matrix[i, j] / area)))
+    
     maxd = dis_matrix.max()
 
     # sort data points by density in descending order and return its index
