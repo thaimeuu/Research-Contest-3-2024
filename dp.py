@@ -15,6 +15,8 @@ DPC parameters are set as follows:
 - k = 25 (number of clusters)
 - percent = 0.75
 - kernel = cutoff
+
+How to use: Just run the script
 """
 
 def dp():
