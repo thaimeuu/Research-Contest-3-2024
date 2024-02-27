@@ -87,7 +87,9 @@ for the upcoming Research Contest held by my university
   - Analyze and run [DPC code in python](<code availability/HIAC-main/DPC.py>)
   - Run DPC on rice panicle image.
 - Feb 26:
-  - Writing the report paper: DP-Dsets and HIAC
+  - Writing the report paper: HIAC
   - Write a script to run HIAC-DP on rice panicle
+- Feb 27:
+  - Writing the report paper: DP-Dsets, Denmune, Hi-Lassie
   
 `Expected end date: March 18 2024`
