@@ -19,19 +19,20 @@ DPC parameters are set as follows:
 How to use: Just run the script
 """
 
-def dp():
+
+def dp() -> None:
     """
     density peaks clustering
-    
+
     arguments: none
-    
+
     returns: none (save image)
     """
     folder_path = r"skeleton_dataset"
     file_names = os.listdir(folder_path)
-    
+
     for file_name in file_names:
-    
+
         file_path = f"{folder_path}/{file_name}"
 
         img_in = cv2.imread(file_path, cv2.IMREAD_GRAYSCALE)
@@ -56,14 +57,14 @@ def dp():
         centers = np.zeros([len(clusters), 2])
         for i, cluster in enumerate(clusters):
             centers[i, :] = np.mean(white_px[labels == cluster], axis=0)
-            
-        centers = centers.astype('i')
+
+        centers = centers.astype("i")
         print(centers)
 
         img_out = cv2.cvtColor(img_in, cv2.COLOR_GRAY2RGB)
         for i in range(len(centers)):
             cv2.circle(img_out, (centers[i, 1], centers[i, 0]), 1, (0, 0, 255), -1)
-            
+
         # Uncomment 3 lines below to view the clustered image
         # cv2.imshow("DPC", img_out)
         # cv2.waitKey(0)
@@ -72,7 +73,7 @@ def dp():
         # Save image
         save_path = rf"clustered_skeleton/DPC/{file_name}"
         cv2.imwrite(save_path, img_out)
-    
+
+
 if __name__ == "__main__":
     dp()
-    
