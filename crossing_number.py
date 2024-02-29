@@ -82,7 +82,7 @@ def crossing_number() -> None:
         print(f"Successfully generated {file_name}")
 
         # Create labels for f1_score evaluation
-        img_f1 = np.zeros([256, 256]).astype(np.uint8)
+        img_f1 = np.zeros(img_in.shape).astype(np.uint8)
         for row, col in centers:
             img_f1[row, col] = 1
 
