@@ -95,5 +95,6 @@ for the upcoming Research Contest held by my university
   - Read [crossing number](<paper/papers to research/ĐATN_Nguyễn Ngọc Khang (crossing number).pdf>)
   - Try to implement crossing number
   - Write a script for [crossing number](crossing_number.py)
+  - Calculate F1 score, precision, recall
   
 `Expected end date: March 18 2024`
