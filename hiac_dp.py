@@ -112,6 +112,8 @@ def hiac_dp() -> None:
     # Save image
     save_path = rf"clustered_skeleton/HIAC-DPC/{file_name}"
     cv2.imwrite(save_path, img_out)
+    
+    print(f"Successfully generated {file_name}")
         
         
 if __name__ == "__main__":
