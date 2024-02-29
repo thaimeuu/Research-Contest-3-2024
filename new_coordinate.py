@@ -20,7 +20,7 @@ def new_coordinate(
     old_width, old_height = old_shape
     new_width, new_height = new_shape
 
-    new_x = (old_x / old_width) * new_width
-    new_y = (old_y / old_height) * new_height
+    new_x = round((old_x / old_width) * new_width)
+    new_y = round((old_y / old_height) * new_height)
 
     return (new_x, new_y)
