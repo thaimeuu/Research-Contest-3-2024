@@ -91,5 +91,8 @@ for the upcoming Research Contest held by my university
   - Write a script to run HIAC-DP on rice panicle
 - Feb 27:
   - Writing the report paper: DP-Dsets, Denmune, Hi-Lassie
+- Feb 29:
+  - Read [crossing number](<paper/papers to research/ĐATN_Nguyễn Ngọc Khang (crossing number).pdf>)
+  - Try to implement crossing number
   
 `Expected end date: March 18 2024`
