@@ -24,9 +24,3 @@ def new_coordinate(
     new_y = (old_y / old_height) * new_height
 
     return (new_x, new_y)
-
-if __name__ == "__main__":
-    new_x, new_y = new_coordinate((100, 100), (256, 256), (2658, 1773))
-    new_x, new_y = round(new_x), round(new_y)
-    print(new_x, new_y)
-    
