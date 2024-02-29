@@ -96,5 +96,7 @@ for the upcoming Research Contest held by my university
   - Try to implement crossing number
   - Write a script for [crossing number](crossing_number.py)
   - Calculate F1 score, precision, recall
+  - [F1-score script](F1.py)
+  - Writing [utility script](new_coordinate.py)
   
 `Expected end date: March 18 2024`
