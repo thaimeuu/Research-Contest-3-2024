@@ -8,10 +8,11 @@ This script applies crossing number algorithm to detect rice panicle junctions
 
 Input: None
 
-Output: None (Save clustered image to save_path)
+Output: None (Save clustered image to save_path, save f1 image for evaluation)
 
 How to use: Simply run the script
 """
+
 
 def crossing_number() -> None:
     folder_path = r"skeleton_dataset_Kien"
@@ -79,6 +80,16 @@ def crossing_number() -> None:
         cv2.imwrite(save_path, img_out)
 
         print(f"Successfully generated {file_name}")
+
+        # Create labels for f1_score evaluation
+        img_f1 = np.zeros([256, 256]).astype(np.uint8)
+        for row, col in centers:
+            img_f1[row, col] = 1
+
+        f1_save_path = rf"clustered_skeleton/Crossing-number/f1_score/{file_name}"
+        cv2.imwrite(f1_save_path, img_f1)
+        print(f"Successfully generated f1 image: {file_name}")
+
 
 if __name__ == "__main__":
     crossing_number()
