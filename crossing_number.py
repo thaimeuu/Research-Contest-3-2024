@@ -15,7 +15,7 @@ How to use: Simply run the script
 
 
 def crossing_number() -> None:
-    folder_path = r"skeleton_dataset_Kien"
+    folder_path = r"skeleton_dataset"
     file_names = os.listdir(folder_path)
 
     for file_name in file_names:
@@ -86,7 +86,7 @@ def crossing_number() -> None:
         for row, col in centers:
             img_f1[row, col] = 1
 
-        f1_save_path = rf"clustered_skeleton/Crossing-number/f1_score/{file_name}"
+        f1_save_path = rf"F1_score/crossing-number/Zhang-Suen/{file_name}"
         cv2.imwrite(f1_save_path, img_f1)
         print(f"Successfully generated f1 image: {file_name}")
 
