@@ -14,7 +14,7 @@ How to use: Simply run the script
 """
 
 def crossing_number() -> None:
-    folder_path = r"skeleton_dataset"
+    folder_path = r"skeleton_dataset_Kien"
     file_names = os.listdir(folder_path)
 
     for file_name in file_names:
@@ -76,7 +76,7 @@ def crossing_number() -> None:
         # cv2.destroyAllWindows()
 
         # Save file
-        save_path = rf"clustered_skeleton/Crossing-number/{file_name}"
+        save_path = rf"clustered_skeleton/Crossing-number/gradient-based-optimization/{file_name}"
         cv2.imwrite(save_path, img_out)
 
 
