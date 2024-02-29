@@ -20,7 +20,6 @@ def crossing_number() -> None:
     for file_name in file_names:
         file_path = f"{folder_path}/{file_name}"
         img_in = cv2.imread(file_path, cv2.IMREAD_GRAYSCALE)
-        print(f"img_in {img_in.shape}")
 
         # Uncomment to see original image
         # cv2.imshow(f"{file_name[:-4]}", img_in)
@@ -79,6 +78,7 @@ def crossing_number() -> None:
         save_path = rf"clustered_skeleton/Crossing-number/gradient-based-optimization/{file_name}"
         cv2.imwrite(save_path, img_out)
 
+        print(f"Successfully generated {file_name}")
 
 if __name__ == "__main__":
     crossing_number()
