@@ -45,7 +45,8 @@ def main():
         cv2.circle(img, (a, b), 10, (0, 0, 255), cv2.FILLED)
 
     # Save file
-    cv2.imwrite(f"labelled_dataset/{path[18:]}", img)
+    save_path = rf"labelled_dataset/{path[18:]}"
+    cv2.imwrite(save_path, img)
 
 
 if __name__ == "__main__":
