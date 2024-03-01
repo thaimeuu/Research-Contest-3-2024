@@ -98,5 +98,9 @@ for the upcoming Research Contest held by my university
   - Calculate F1 score, precision, recall
   - [F1-score script](F1.py)
   - Writing [utility script](new_coordinate.py)
+- Mar 1:
+  - Try different approach of calculating F1-score
+  - F1-score for crossing number
+  - Write the **methodology part**
   
 `Expected end date: March 18 2024`
