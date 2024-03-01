@@ -71,7 +71,7 @@ def main() -> None:
 
         F1 = f1_score(y_true, y_pred, average="binary")
 
-        print(f"Successfully calculated F1 score for {f1_file_name}: {F1}")
+        print(f"Successfully calculated F1 score for {f1_file_name}: {F1}\n")
 
 
 if __name__ == "__main__":
