@@ -38,6 +38,7 @@ def main() -> None:
         original_image = cv2.imread(original_image_path)
         old_shape = (original_image.shape[1], original_image.shape[0])
         print(f"Original image shape: {old_shape}")
+        print(f"New image shape: {new_shape}")
 
         for old_coordinates in generating:
             new_x, new_y = new_coordinate(old_coordinates, old_shape, new_shape)
