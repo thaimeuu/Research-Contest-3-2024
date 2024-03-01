@@ -12,6 +12,7 @@ def main() -> None:
     f1_file_names = os.listdir(f1_folder_path)
 
     for f1_file_name in f1_file_names:
+        print(f"Examining {f1_file_name}...")
         f1_file_path = f1_folder_path + "/" + f1_file_name
 
         # y_pred used for f1_score
@@ -33,7 +34,10 @@ def main() -> None:
         y_true = np.zeros(img_pred.shape).astype(np.uint8)
 
         # New coordinates and add them to y_true
-        old_shape = (2658, 1773)
+        original_image_path = f"Jouannic_dataset/{f1_file_name[:-4]}.JPG"
+        original_image = cv2.imread(original_image_path)
+        old_shape = (original_image.shape[1], original_image.shape[0])
+        print(f"Original image shape: {old_shape}")
 
         for old_coordinates in generating:
             new_x, new_y = new_coordinate(old_coordinates, old_shape, new_shape)
