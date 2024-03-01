@@ -56,13 +56,13 @@ def main() -> None:
             new_x, new_y = new_coordinate(old_coordinates, old_shape, new_shape)
             y_true[new_y, new_x] = 1
 
-        # Check ground truth vertices (Uncomment immediately after use)
+        # Check y_true junctions (Uncomment immediately after use)
         # y_true[y_true == 1] = 255
         # cv2.imshow("ground truth", y_true)
         # cv2.waitKey(0)
         # cv2.destroyAllWindows()
 
-        # Check ground truth vertices (Uncomment immediately after use)
+        # Check y_pred junctions (Uncomment immediately after use)
         # img_pred[img_pred == 1] = 255
         # cv2.imshow("prediction", img_pred)
         # cv2.waitKey(0)
