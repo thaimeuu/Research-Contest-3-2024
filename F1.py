@@ -12,7 +12,6 @@ def main() -> None:
     f1_file_names = os.listdir(f1_folder_path)
 
     for f1_file_name in f1_file_names:
-        print(f1_file_name)
         f1_file_path = f1_folder_path + "/" + f1_file_name
 
         # y_pred used for f1_score
@@ -67,18 +66,12 @@ def main() -> None:
         y_true = y_true.flatten()
         y_pred = img_pred.flatten()
 
-        print(
-            f"y_true: {y_true.shape}, unique: {np.unique(y_true, return_counts=True)}"
-        )
-        print(
-            f"y_true: {y_true.shape}, unique: {np.unique(y_pred, return_counts=True)}"
-        )
+        print(f"y_true: {y_true.shape}, unique: {np.unique(y_true, return_counts=True)}")
+        print(f"y_pred: {y_pred.shape}, unique: {np.unique(y_pred, return_counts=True)}")
 
         F1 = f1_score(y_true, y_pred, average="binary")
 
         print(f"Successfully calculated F1 score for {f1_file_name}: {F1}")
-
-        break
 
 
 if __name__ == "__main__":
