@@ -102,5 +102,7 @@ for the upcoming Research Contest held by my university
   - Try different approach of calculating F1-score
   - F1-score for crossing number
   - Write the **methodology part**
+- Mar 2:
+  - Write report paper
   
 `Expected end date: March 18 2024`
