@@ -104,5 +104,7 @@ for the upcoming Research Contest held by my university
   - Write the **methodology part**
 - Mar 2:
   - Write report paper
+- Mar 3:
+  - Write report paper
   
 `Expected end date: March 18 2024`
