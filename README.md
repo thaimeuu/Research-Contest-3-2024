@@ -106,5 +106,6 @@ for the upcoming Research Contest held by my university
   - Write report paper
 - Mar 3:
   - Write report paper
+  - Try different approach to compute F1-score -> [F1-alternative.py](F1-alternative.py)
   
 `Expected end date: March 18 2024`
