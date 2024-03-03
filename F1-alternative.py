@@ -8,11 +8,13 @@ from combine_pred_true import combine_pred_true
 
 def F1_alternative(return_confusion_matrix=False, return_counts=False, combine_results=False) -> None:
 
-    f1_folder_path = "F1_score/crossing-number/Zhang-Suen"
+    # Toggle between Zhang-Suen and gradient-based-optimization
+    # f1_folder_path = "F1_score/crossing-number/Zhang-Suen"
+    f1_folder_path = "F1_score/crossing-number/gradient-based-optimization"
     f1_file_names = os.listdir(f1_folder_path)
 
     for f1_file_name in f1_file_names:
-        print(f"Examining {f1_file_name} from {f1_folder_path}...")
+        print(f"====================\nEXAMINING {f1_file_name} from {f1_folder_path}...")
         f1_file_path = f1_folder_path + "/" + f1_file_name
 
         # y_pred used for f1_score
@@ -68,7 +70,7 @@ def F1_alternative(return_confusion_matrix=False, return_counts=False, combine_r
             F1 = f1_score(y_true, y_pred, average="binary")
             f1_record.append(F1)
 
-        print(f"Successfully calculated F1 score for {f1_file_name}: {max(f1_record)} with marker_size = {np.argmax(f1_record) + 10}\n")
+        print(f"Successfully calculated F1 score for {f1_file_name}: {max(f1_record)} with marker_size = {np.argmax(f1_record) + 10}\n====================")
         
         if return_confusion_matrix:
             print(f"---\nConfusion matrix:\n{cm_record[np.argmax(f1_record)]}\n---")
@@ -110,6 +112,8 @@ def F1_alternative(return_confusion_matrix=False, return_counts=False, combine_r
             y_true = cv2.resize(y_true, [256, 256], interpolation=cv2.INTER_NEAREST)
             
             combine_pred_true(y_true, y_pred_copy, visualization=True)
+            
+        print("")
         
             
 
