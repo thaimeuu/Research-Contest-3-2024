@@ -15,7 +15,7 @@ How to use: Simply run the script
 
 
 def crossing_number() -> None:
-    folder_path = r"skeleton_dataset_Kien"
+    folder_path = r"skeleton_dataset"
     file_names = os.listdir(folder_path)
 
     for file_name in file_names:
@@ -75,9 +75,9 @@ def crossing_number() -> None:
         # cv2.waitKey(0)
         # cv2.destroyAllWindows()
 
-        # Save file
-        save_path = rf"clustered_skeleton/Crossing-number/gradient-based-optimization/{file_name}"
-        # save_path = rf"clustered_skeleton/Crossing-number/Zhang-Suen/{file_name}"
+        # Save file (Toggle between Zhang-Suen and gradient-based-optimization)
+        # save_path = rf"clustered_skeleton/Crossing-number/gradient-based-optimization/{file_name}"
+        save_path = rf"clustered_skeleton/Crossing-number/Zhang-Suen/{file_name}"
         cv2.imwrite(save_path, img_out)
 
         print(f"Successfully generated {file_name}")
@@ -85,12 +85,14 @@ def crossing_number() -> None:
         # Create labels for f1_score evaluation
         img_f1 = np.zeros(img_in.shape).astype(np.uint8)
         for row, col in centers:
-            img_f1[row, col] = 1
+            cv2.circle(img_f1, [col, row], 1, 255, -1)
 
-        f1_save_path = rf"F1_score/crossing-number/gradient-based-optimization/{file_name}"
-        # f1_save_path = rf"F1_score/crossing-number/Zhang-Suen/{file_name}"
+        # f1_save_path = rf"F1_score/crossing-number/gradient-based-optimization/{file_name}"
+        f1_save_path = rf"F1_score/crossing-number/Zhang-Suen/{file_name}"
         cv2.imwrite(f1_save_path, img_f1)
         print(f"Successfully generated f1 image: {file_name}")
+        
+        break
 
 
 if __name__ == "__main__":
