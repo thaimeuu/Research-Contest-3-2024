@@ -25,7 +25,7 @@ def combine_pred_true(y_true: np.array, y_pred: np.array, visualization=False, s
     true_white_px = np.argwhere(y_true > 0)
     pred_white_px = np.argwhere(y_pred > 0)
     
-    img_out = np.zeros([256, 256, 3])
+    img_out = np.zeros([256, 256, 3]).astype(np.uint8)
     
     for x, y in true_white_px:
         img_out[x, y] = (255, 0, 0)  # blue
@@ -36,8 +36,6 @@ def combine_pred_true(y_true: np.array, y_pred: np.array, visualization=False, s
         else:
             img_out[x, y] = (0, 255, 0)  # green
             
-    print(np.unique(img_out, return_counts=True))
-    
     if visualization:
         cv2.imshow("Combined image", img_out)
         cv2.waitKey(0)
