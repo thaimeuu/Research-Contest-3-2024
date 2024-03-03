@@ -6,7 +6,7 @@ from vertices_coordinates import find_vertices
 from combine_pred_true import combine_pred_true
 
 
-def main(return_confusion_matrix=False, return_counts=False, combine_results=False) -> None:
+def F1_alternative(return_confusion_matrix=False, return_counts=False, combine_results=False) -> None:
 
     f1_folder_path = "F1_score/crossing-number/Zhang-Suen"
     f1_file_names = os.listdir(f1_folder_path)
@@ -115,4 +115,4 @@ def main(return_confusion_matrix=False, return_counts=False, combine_results=Fal
 
 
 if __name__ == "__main__":
-    main(return_confusion_matrix=True, return_counts=True, combine_results=False)
+    F1_alternative(return_confusion_matrix=True, return_counts=True, combine_results=False)
