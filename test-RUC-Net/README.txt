@@ -14,3 +14,5 @@ image descriptions: (11 files)
 - y_true_white_px.png: white pixel coordinates in y_true
 
 - f1-score.png: f1-score and related information
+
+- pred_true_combined.png: y_pred and y_true in 1 frame, pred = red, true = blue, true positives = green
