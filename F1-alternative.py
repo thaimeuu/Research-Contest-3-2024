@@ -40,7 +40,7 @@ def F1_alternative(return_confusion_matrix=False, return_counts=False, combine_r
         f1_record = []
         cm_record = []
         
-        for marker_size in range(10, 20):    
+        for marker_size in range(7, 16):    
             # Initialize y_true used for f1_score
             y_true = np.zeros(original_image.shape).astype(np.uint8)
             
@@ -70,7 +70,7 @@ def F1_alternative(return_confusion_matrix=False, return_counts=False, combine_r
             F1 = f1_score(y_true, y_pred, average="binary")
             f1_record.append(F1)
 
-        print(f"Successfully calculated F1 score for {f1_file_name}: {max(f1_record)} with marker_size = {np.argmax(f1_record) + 10}\n====================")
+        print(f"Successfully calculated F1 score for {f1_file_name}: {max(f1_record)} with marker_size = {np.argmax(f1_record) + 7}\n====================")
         
         if return_confusion_matrix:
             print(f"---\nConfusion matrix:\n{cm_record[np.argmax(f1_record)]}\n---")
@@ -119,4 +119,4 @@ def F1_alternative(return_confusion_matrix=False, return_counts=False, combine_r
 
 
 if __name__ == "__main__":
-    F1_alternative(return_confusion_matrix=True, return_counts=True, combine_results=False)
+    F1_alternative(return_confusion_matrix=True, return_counts=True, combine_results=True)
