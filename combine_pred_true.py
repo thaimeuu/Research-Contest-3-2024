@@ -25,7 +25,7 @@ def combine_pred_true(y_true: np.array, y_pred: np.array, visualization=False, s
     true_white_px = np.argwhere(y_true > 0)
     pred_white_px = np.argwhere(y_pred > 0)
     
-    img_out = np.zeros([256, 256, 3]).astype(np.uint8)
+    img_out = np.zeros(y_pred.shape + (3,)).astype(np.uint8)
     
     for x, y in true_white_px:
         img_out[x, y] = (255, 0, 0)  # blue
