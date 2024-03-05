@@ -1,9 +1,10 @@
 import os
 import cv2
 import numpy as np
-from sklearn.metrics import f1_score, confusion_matrix
+from sklearn.metrics import f1_score, confusion_matrix, fbeta_score
 from vertices_coordinates import find_vertices
 from combine_pred_true import combine_pred_true
+from fbeta import f_beta
 
 
 def F1_alternative(return_confusion_matrix=False, return_counts=False, combine_results=False) -> None:
@@ -39,6 +40,8 @@ def F1_alternative(return_confusion_matrix=False, return_counts=False, combine_r
         # Vary marker_size range and capture best F1-score
         f1_record = []
         cm_record = []
+        fbeta_record = []
+        f_score_record = []
         
         for marker_size in range(7, 16):    
             # Initialize y_true used for f1_score
@@ -50,10 +53,10 @@ def F1_alternative(return_confusion_matrix=False, return_counts=False, combine_r
                 cv2.circle(y_true, [x, y], marker_size, 255, -1)
             for x, y in secondary:
                 cv2.circle(y_true, [x, y], marker_size, 255, -1)
-            for x, y in tertiary:
-                cv2.circle(y_true, [x, y], marker_size, 255, -1)
-            for x, y in quaternary:
-                cv2.circle(y_true, [x, y], marker_size, 255, -1)
+            # for x, y in tertiary:
+            #     cv2.circle(y_true, [x, y], marker_size, 255, -1)
+            # for x, y in quaternary:
+            #     cv2.circle(y_true, [x, y], marker_size, 255, -1)
             
             
             y_true = cv2.resize(y_true, [256, 256], interpolation=cv2.INTER_NEAREST)
@@ -69,8 +72,12 @@ def F1_alternative(return_confusion_matrix=False, return_counts=False, combine_r
 
             F1 = f1_score(y_true, y_pred, average="binary")
             f1_record.append(F1)
+            
+            fbeta, precision, recall = f_beta(y_true, y_pred)
+            fbeta_record.append(fbeta)
+            f_score_record.append([fbeta, precision, recall])
 
-        print(f"Successfully calculated F1 score for {f1_file_name}: {max(f1_record)} with marker_size = {np.argmax(f1_record) + 7}\n====================")
+        print(f"Successfully calculated F1 score for {f1_file_name}: {max(f1_record)} with marker_size = {np.argmax(f1_record) + 7} f_beta, precision, recall = {f_score_record[np.argmax(fbeta_record)]}\n====================")
         
         if return_confusion_matrix:
             print(f"---\nConfusion matrix:\n{cm_record[np.argmax(f1_record)]}\n---")
@@ -119,4 +126,4 @@ def F1_alternative(return_confusion_matrix=False, return_counts=False, combine_r
 
 
 if __name__ == "__main__":
-    F1_alternative(return_confusion_matrix=True, return_counts=True, combine_results=True)
+    F1_alternative(return_confusion_matrix=True, return_counts=True, combine_results=False)
