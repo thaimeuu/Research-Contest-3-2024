@@ -40,7 +40,6 @@ def Accuracy12(GT: np.array, seg: np.array, beta: float = 0.3) -> list[float]:
             p.append(0)
         else:
             p.append(CM[i, i] / (np.sum(CM[:, i])))
-    print(CM, np.sum(CM))
     F = (1 + beta) * (np.mean(r) * np.mean(p)) / (beta * np.mean(p) + np.mean(r))
     return F, np.mean(p), np.mean(r)
 
@@ -67,7 +66,6 @@ def f_beta(y_true: np.array, y_pred: np.array, beta: float = 0.3) -> list[float]
     recall = np.mean([tn / (tn + fp), tp / (tp + fn)])
     # fbeta = (1 + beta ** 2) * tp / ((1 + beta ** 2) * tp + fp + beta ** 2 * fn)
     fbeta = (1 + beta) * precision * recall / (beta * precision + recall)
-    print(cm, np.sum(cm))
     return fbeta, precision, recall
 
 
