@@ -111,7 +111,7 @@ for the upcoming Research Contest held by my university
   - Try one more approach to compute F1-score
   - Write report paper
 - Mar 5:
-  - Try one more F1 approach (f-beta)
+  - Try one more F1 approach [fbeta.py](fbeta.py)
   - Write report paper
   
 `Expected end date: March 18 2024`
