@@ -9,8 +9,8 @@ from combine_pred_true import combine_pred_true
 def F1_alternative(return_confusion_matrix=False, return_counts=False, combine_results=False) -> None:
 
     # Toggle between Zhang-Suen and gradient-based-optimization
-    # f1_folder_path = "F1_score/crossing-number/Zhang-Suen"
-    f1_folder_path = "F1_score/crossing-number/gradient-based-optimization"
+    f1_folder_path = "F1_score/crossing-number/Zhang-Suen/RUC-Net"
+    # f1_folder_path = "F1_score/crossing-number/gradient-based-optimization"
     f1_file_names = os.listdir(f1_folder_path)
 
     for f1_file_name in f1_file_names:
