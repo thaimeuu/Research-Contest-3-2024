@@ -110,5 +110,8 @@ for the upcoming Research Contest held by my university
 - Mar 4:
   - Try one more approach to compute F1-score
   - Write report paper
+- Mar 5:
+  - Try one more F1 approach (f-beta)
+  - Write report paper
   
 `Expected end date: March 18 2024`
