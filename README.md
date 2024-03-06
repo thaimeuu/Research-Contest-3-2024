@@ -113,5 +113,7 @@ for the upcoming Research Contest held by my university
 - Mar 5:
   - Try one more F1 approach [fbeta.py](fbeta.py)
   - Write report paper
+- Mar 6:
+  - Final F1 script: [f1-score-by-thai.py](f1-score-by-thai.py)
   
 `Expected end date: March 18 2024`
