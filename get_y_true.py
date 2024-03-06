@@ -30,17 +30,20 @@ def get_y_true() -> None:
         for a, b in generating:
             new_a, new_b = new_coordinate([a, b], old_shape, [256, 256])
             y_true_1[new_b, new_a] = 255
-            cv2.circle(y_true_13, (new_a, new_b), 2, 255, -1)
+            # cv2.circle(y_true_13, (new_a, new_b), 2, 255, -1)  # each junction takes up 13 pixels
+            y_true_13[new_b -2 : new_b + 3, new_a - 2 : new_a + 3] = 255  # each junction takes up 25 pixels
             
         for a, b in primary:
             new_a, new_b = new_coordinate([a, b], old_shape, [256, 256])
             y_true_1[new_b, new_a] = 255
-            cv2.circle(y_true_13, (new_a, new_b), 2, 255, -1)
+            # cv2.circle(y_true_13, (new_a, new_b), 2, 255, -1)
+            y_true_13[new_b -2 : new_b + 3, new_a - 2 : new_a + 3] = 255
             
         for a, b in secondary:
             new_a, new_b = new_coordinate([a, b], old_shape, [256, 256])
             y_true_1[new_b, new_a] = 255
-            cv2.circle(y_true_13, (new_a, new_b), 2, 255, -1)
+            # cv2.circle(y_true_13, (new_a, new_b), 2, 255, -1)
+            y_true_13[new_b -2 : new_b + 3, new_a - 2 : new_a + 3] = 255
             
         cv2.imwrite(f"y_true/crossing_number/y_true_1/{save_name}.png", y_true_1)
         cv2.imwrite(f"y_true/crossing_number/y_true_13/{save_name}.png", y_true_13)
