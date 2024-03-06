@@ -85,7 +85,7 @@ def crossing_number() -> None:
         # Create labels for f1_score evaluation
         img_f1 = np.zeros(img_in.shape).astype(np.uint8)
         for row, col in centers:
-            cv2.circle(img_f1, [col, row], 1, 255, -1)
+            img_f1[row, col] = 255
 
         # f1_save_path = rf"F1_score/crossing-number/gradient-based-optimization/{file_name}"
         f1_save_path = rf"F1_score/crossing-number/Zhang-Suen/RUC-Net/{file_name}"
