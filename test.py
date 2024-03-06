@@ -14,25 +14,26 @@ print(len(junction_pred))
 print(len(junction_true))
 
 for [x, y] in junction_true:
-    cv2.circle(y_true, [y, x], 2, 255, -1)  # one junction equals 13 pixels
+    # cv2.circle(y_true, [y, x], 2, 255, -1)  # one junction equals 13 pixels
+    y_true[x-2:x+3, y-2:y+3] = 255  # one junction equals 25 pixels
     
 junction_true = np.argwhere(y_true)
 print(len(junction_true))
 
-original_image = cv2.imread("grayscale_dataset/1C8-12-3.JPG", cv2.IMREAD_GRAYSCALE)
+original_image = cv2.imread("grayscale_dataset/1C8-12-3.JPG")
 original_image = cv2.resize(original_image, [256, 256])
 
 for x, y in junction_true:
-    original_image[x, y] = 255
+    original_image[x, y] = (255, 0, 0)
     
 for x, y in junction_pred:
-    original_image[x, y] = 0
+    original_image[x, y] = (0, 0, 255)
     
 # cv2.imshow("original", original_image)
 # cv2.waitKey(0)
 # cv2.destroyAllWindows()
 
-# cv2.imwrite("test-RUC-Net/original_image_with_big_true_junctions.png", original_image)
+cv2.imwrite("test-RUC-Net/original_image_with_big_true_junctions.png", original_image)
     
 # cv2.imshow("true", y_true)
 # cv2.waitKey(0)
