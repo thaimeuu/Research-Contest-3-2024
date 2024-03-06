@@ -9,7 +9,7 @@ Compare 2 images:
     - y_pred with each predicted junction taking up 1 pixel
     - y_true_25 with each true junction taking up 25 pixels (central pixel being true junction -> y_true_1)
 Evaluate: 
-    - If a predicted junction is the same as 1 out of 25 true-junction pixels, count as true negatives 
+    - If a predicted junction is the same as 1 out of 25 true-junction pixels, count as true positives 
 """
 
 def f1_by_thai(y_true_25: np.array, y_true_1: np.array, y_pred: np.array, return_precision=True, return_recall=True) -> float:
