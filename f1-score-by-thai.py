@@ -47,11 +47,15 @@ def f1_by_thai(y_true_13: np.array, y_true_1: np.array, y_pred: np.array, return
 
 
 if __name__ == "__main__":
-    y_true_13 = cv2.imread("y_true/crossing_number/y_true_13/1C8-7-1.png", cv2.IMREAD_GRAYSCALE)
-    y_true_1 = cv2.imread("y_true/crossing_number/y_true_1/1C8-7-1.png", cv2.IMREAD_GRAYSCALE)
-    y_pred = cv2.imread("y_pred/crossing-number/Zhang-Suen/RUC-Net/1C8-7-1.png", cv2.IMREAD_GRAYSCALE)
-    f1_score, precision, recall = f1_by_thai(y_true_13, y_true_1, y_pred)
-    print(f1_score, precision, recall)
-    
-    combine_pred_true(y_true_13, y_pred, visualization=True)
+    folder_name = "y_pred/crossing-number/Zhang-Suen/RUC-Net"
+    file_names = os.listdir(folder_name)
+    for file_name in file_names:
+        print(f"\n{file_name}")
+        y_true_13 = cv2.imread(f"y_true/crossing_number/y_true_13/{file_name}", cv2.IMREAD_GRAYSCALE)
+        y_true_1 = cv2.imread(f"y_true/crossing_number/y_true_1/{file_name}", cv2.IMREAD_GRAYSCALE)
+        y_pred = cv2.imread(f"y_pred/crossing-number/Zhang-Suen/RUC-Net/{file_name}", cv2.IMREAD_GRAYSCALE)
+        f1_score, precision, recall = f1_by_thai(y_true_13, y_true_1, y_pred)
+        print(f1_score, precision, recall)
+        
+        combine_pred_true(y_true_13, y_pred, visualization=True)
     
