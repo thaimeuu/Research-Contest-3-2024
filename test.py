@@ -5,33 +5,49 @@ from sklearn.metrics import f1_score
 from new_coordinate import new_coordinate
 
 
-y_pred = cv2.imread("F1_score/crossing-number/Zhang-Suen/RUC-Net/1C8-9-2.png", cv2.IMREAD_GRAYSCALE)
-original_image = cv2.imread("Jouannic_dataset/1C8-9-2.JPG")
-img_out = np.copy(original_image)
-print(np.unique(y_pred, return_counts=True))
+y_pred = cv2.imread("test-RUC-Net/y_pred_255_1C8-12-3.png", cv2.IMREAD_GRAYSCALE)
+y_true = cv2.imread("test-RUC-Net/y_true_255_1C8-12-3.png", cv2.IMREAD_GRAYSCALE)
 
-y_pred = cv2.resize(y_pred, [img_out.shape[1], img_out.shape[0]], interpolation=cv2.INTER_NEAREST)
+junction_true = np.argwhere(y_true)
+junction_pred = np.argwhere(y_pred)
+print(len(junction_pred))
+print(len(junction_true))
 
-cv2.imwrite("test-img/new_y_pred.png", y_pred)
-
-print(np.unique(y_pred, return_counts=True))
-white_px = np.argwhere(y_pred > 0)
-
-for x, y in white_px:
-    img_out[x, y] = (0, 0, 255)
+for [x, y] in junction_true:
+    cv2.circle(y_true, [y, x], 2, 255, -1)  # one junction equals 13 pixels
     
-cv2.imwrite("test-img/pred_junctions_on_original_img.png", img_out)
-# y_true = cv2.imread("test-img/y_true.png", cv2.IMREAD_GRAYSCALE)
+junction_true = np.argwhere(y_true)
+print(len(junction_true))
 
-# print(np.unique(y_true, return_counts=True))
+original_image = cv2.imread("grayscale_dataset/1C8-12-3.JPG", cv2.IMREAD_GRAYSCALE)
+original_image = cv2.resize(original_image, [256, 256])
 
-# img = combine_pred_true(y_true, y_pred, save_path="D:/HRG/SVNCKH 3-2024/test-img/combined.png")
+for x, y in junction_true:
+    original_image[x, y] = 255
+    
+for x, y in junction_pred:
+    original_image[x, y] = 0
+    
+# cv2.imshow("original", original_image)
+# cv2.waitKey(0)
+# cv2.destroyAllWindows()
 
-# y_pred[y_pred == 255] = 1
-# y_true[y_true == 255] = 1
+# cv2.imwrite("test-RUC-Net/original_image_with_big_true_junctions.png", original_image)
+    
+# cv2.imshow("true", y_true)
+# cv2.waitKey(0)
+# cv2.destroyAllWindows()
 
-# y_pred = y_pred.flatten()
-# y_true = y_true.flatten()
+# cv2.imwrite("test-RUC-Net/Big-junction-true.png", y_true)
 
-# f1 = f1_score(y_true, y_pred)
-# print(f1)
+# junction_pred = tuple(map(tuple, junction_pred))
+# junction_true = tuple(map(tuple, junction_true))
+
+# for junction in junction_pred:
+#     print(f"{junction} is true positive: {junction in junction_true}")
+
+# for i in range(len(junction_pred)):
+#     print(np.linalg.norm(junction_pred[i] - junction_true[i]))
+    
+    
+# combine_pred_true(y_true, y_pred, visualization=True, save_path="test-RUC-Net/combined.png")
