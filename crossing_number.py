@@ -15,7 +15,7 @@ How to use: Simply run the script
 
 
 def crossing_number() -> None:
-    folder_path = r"skeleton_dataset/RUC-Net"
+    folder_path = r"dataset_2_skeleton_Zhang_Suen/.Asian-African panel_CIAT/Asian-African panel_New"
     file_names = os.listdir(folder_path)
 
     for file_name in file_names:
@@ -76,8 +76,8 @@ def crossing_number() -> None:
         # cv2.destroyAllWindows()
 
         # Save file (Toggle between Zhang-Suen and gradient-based-optimization)
-        save_path = rf"clustered_skeleton/Crossing-number/gradient-based-optimization/RUC-Net/{file_name}"
-        # save_path = rf"clustered_skeleton/Crossing-number/Zhang-Suen/RUC-Net/{file_name}"
+        # save_path = rf"clustered_skeleton/Crossing-number/gradient-based-optimization/RUC-Net/{file_name}"
+        save_path = rf"dataset_2_clustered_Zhang_Suen/.Asian-African panel_CIAT/Asian-African panel_New/crossing_number/{file_name}"
         cv2.imwrite(save_path, img_out)
 
         print(f"Successfully generated {file_name}")
@@ -87,8 +87,8 @@ def crossing_number() -> None:
         for row, col in centers:
             img_f1[row, col] = 255
 
-        f1_save_path = rf"y_pred/crossing-number/gradient-based-optimization/RUC-Net/{file_name}"
-        # f1_save_path = rf"F1_score/crossing-number/Zhang-Suen/RUC-Net/{file_name}"
+        # f1_save_path = rf"y_pred/crossing-number/gradient-based-optimization/RUC-Net/{file_name}"
+        f1_save_path = rf"dataset_2_y_pred/.Asian-African panel_CIAT/Asian-African panel_New/crossing_number/Zhang-Suen/{file_name}"
         cv2.imwrite(f1_save_path, img_f1)
         print(f"Successfully generated f1 image: {file_name}")
         
