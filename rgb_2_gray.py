@@ -1,3 +1,4 @@
+import os
 import cv2
 
 """
@@ -22,16 +23,22 @@ def rgb_2_gray(rgb_path):
     Returns:
         grayscale img
     """
-    rgb = cv2.imread(rgb_path)
-    gray = cv2.cvtColor(rgb, cv2.COLOR_BGR2GRAY)
-    
-    return gray
+    file_names = os.listdir(rgb_path)
+    file_names.remove('.DS_Store')
+    file_names.remove('SinZoom.jpg')
+    for file in file_names:
+        file_path = rgb_path + "/" + file
+        
+        rgb = cv2.imread(file_path)
+        gray = cv2.cvtColor(rgb, cv2.COLOR_RGB2GRAY)
+        
+        save_path = f"dataset_2_grayscale/.Asian-African panel_CIAT/Asian-African panel_New/{file}"
+        cv2.imwrite(save_path,gray)
+        
+        break
 
-def main():
-    rgb_path = r"Jouannic_dataset/1C8-12-3.JPG"
-    gray = rgb_2_gray(rgb_path)
-    cv2.imwrite(f"grayscale_dataset/{rgb_path[17:]}", gray)
     
 if __name__ == "__main__":
-    main()
+    rgb_path = "dataset_2/.Asian-African panel_CIAT/Asian-African panel_CIAT/Asian-African panel_New/riceproj/images"
+    rgb_2_gray(rgb_path)
     
