@@ -13,24 +13,41 @@ Outputs:
 """
 
 
-def main():
-    folder_name = "RUC-Net images"
-    file_names = os.listdir(folder_name)
-    for file_name in file_names:
-        path = folder_name + "/" + file_name
-        
-        # Read binary image
-        img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
+def extract_skeleton(dataset: int):
+    if dataset == 1:
+        folder_name = "RUC-Net images/dataset_1"
+        file_names = os.listdir(folder_name)
+        for file_name in file_names:
+            path = folder_name + "/" + file_name
+            
+            # Read binary image
+            img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
 
-        # Extract Skeleton
-        skeleton = skeletonize(img, method="zhang").astype(np.uint8) * 255
+            # Extract Skeleton
+            skeleton = skeletonize(img, method="zhang").astype(np.uint8) * 255
 
-        # Save file
-        # cv2.imwrite(f"skeleton_dataset/{binary_img_path}", skeleton)
-        cv2.imwrite(f"skeleton_dataset/RUC-Net/{file_name}", skeleton)
+            # Save file
+            # cv2.imwrite(f"skeleton_dataset/{binary_img_path}", skeleton)
+            cv2.imwrite(f"dataset_1_skeleton_Zhang_Suen/RUC-Net/{file_name}", skeleton)
+            
+            break
         
-        break
+    if dataset == 2:
+        folder_name = "dataset_2_binary/.Asian-African panel_CIAT/Asian-African panel_New"
+        file_names = os.listdir(folder_name)
+        for file_name in file_names:
+            path = folder_name + "/" + file_name
+            
+            img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
+            
+            skeleton = skeletonize(img, method="zhang").astype(np.uint8) * 255
+            
+            save_path = f"dataset_2_skeleton_Zhang_Suen/.Asian-African panel_CIAT/Asian-African panel_New/{file_name}"
+            cv2.imwrite(save_path, skeleton)
+            
+            break
 
 
 if __name__ == "__main__":
-    main()
+    # extract_skeleton(1)
+    extract_skeleton(2)
