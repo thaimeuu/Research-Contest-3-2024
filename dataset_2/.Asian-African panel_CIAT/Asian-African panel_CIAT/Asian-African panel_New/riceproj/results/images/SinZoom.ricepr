@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Rice Panicel Strucutre File
+-The xy-origin is the left top point in the screen
+-The graph is directed
+-The left most "generating" vertex is the root of the tree-->
+<result 	 signature="STRUCTURE" 	 imagepath="SinZoom.jpg">
+<graph>
+	<vertices>
+		<vertex id="java.awt.Point[x=213,y=158]" x="213" y="158" type="Fly" fixed="false"     />
+		<vertex id="java.awt.Point[x=169,y=157]" x="169" y="157" type="Fly" fixed="false"     />
+	</vertices>
+	<edges>
+		<edge vertex1="java.awt.Point[x=213,y=158]" vertex2="java.awt.Point[x=169,y=157]" />
+	</edges>
+</graph>
+</result>

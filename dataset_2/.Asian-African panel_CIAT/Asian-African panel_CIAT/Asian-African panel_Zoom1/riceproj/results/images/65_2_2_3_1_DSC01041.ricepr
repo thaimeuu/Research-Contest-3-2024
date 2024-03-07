@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--Rice Panicel Strucutre File
+-The xy-origin is the left top point in the screen
+-The graph is directed
+-To recover the strucutre, detect the root then span through out the graph -->
+<result 	 signature="STRUCTURE" 	 imagepath="65_2_2_3_1_DSC01041.JPG">
+<graph>
+	<vertices>
+		<vertex id="java.awt.Point[x=1066,y=302]" x="1066" y="302" type="End" fixed="false"     />
+		<vertex id="java.awt.Point[x=461,y=584]" x="461" y="584" type="Seconday" fixed="false"     />
+		<vertex id="java.awt.Point[x=850,y=578]" x="850" y="578" type="Seconday" fixed="false"     />
+		<vertex id="java.awt.Point[x=954,y=586]" x="954" y="586" type="Primary" fixed="false"     />
+		<vertex id="java.awt.Point[x=204,y=884]" x="204" y="884" type="End" fixed="false"     />
+		<vertex id="java.awt.Point[x=744,y=164]" x="744" y="164" type="End" fixed="false"     />
+		<vertex id="java.awt.Point[x=974,y=590]" x="974" y="590" type="Generating" fixed="true"     />
+		<vertex id="java.awt.Point[x=940,y=601]" x="940" y="601" type="Seconday" fixed="false"     />
+		<vertex id="java.awt.Point[x=658,y=601]" x="658" y="601" type="Primary" fixed="false"     />
+		<vertex id="java.awt.Point[x=362,y=437]" x="362" y="437" type="End" fixed="false"     />
+		<vertex id="java.awt.Point[x=622,y=617]" x="622" y="617" type="Seconday" fixed="false"     />
+		<vertex id="java.awt.Point[x=983,y=692]" x="983" y="692" type="End" fixed="false"     />
+		<vertex id="java.awt.Point[x=451,y=514]" x="451" y="514" type="End" fixed="false"     />
+		<vertex id="java.awt.Point[x=485,y=602]" x="485" y="602" type="Primary" fixed="false"     />
+		<vertex id="java.awt.Point[x=779,y=540]" x="779" y="540" type="End" fixed="false"     />
+		<vertex id="java.awt.Point[x=566,y=125]" x="566" y="125" type="End" fixed="false"     />
+		<vertex id="java.awt.Point[x=57,y=335]" x="57" y="335" type="End" fixed="false"     />
+		<vertex id="java.awt.Point[x=939,y=591]" x="939" y="591" type="Primary" fixed="false"     />
+		<vertex id="java.awt.Point[x=1221,y=766]" x="1221" y="766" type="End" fixed="false"     />
+		<vertex id="java.awt.Point[x=1011,y=1132]" x="1011" y="1132" type="End" fixed="false"     />
+		<vertex id="java.awt.Point[x=373,y=528]" x="373" y="528" type="Seconday" fixed="false"     />
+		<vertex id="java.awt.Point[x=313,y=296]" x="313" y="296" type="End" fixed="false"     />
+		<vertex id="java.awt.Point[x=685,y=961]" x="685" y="961" type="End" fixed="false"     />
+		<vertex id="java.awt.Point[x=967,y=583]" x="967" y="583" type="Primary" fixed="false"     />
+		<vertex id="java.awt.Point[x=633,y=576]" x="633" y="576" type="Seconday" fixed="false"     />
+		<vertex id="java.awt.Point[x=97,y=616]" x="97" y="616" type="End" fixed="false"     />
+		<vertex id="java.awt.Point[x=874,y=595]" x="874" y="595" type="Primary" fixed="false"     />
+		<vertex id="java.awt.Point[x=590,y=485]" x="590" y="485" type="End" fixed="false"     />
+		<vertex id="java.awt.Point[x=931,y=591]" x="931" y="591" type="Primary" fixed="false"     />
+		<vertex id="java.awt.Point[x=583,y=697]" x="583" y="697" type="End" fixed="false"     />
+		<vertex id="java.awt.Point[x=648,y=601]" x="648" y="601" type="Primary" fixed="false"     />
+		<vertex id="java.awt.Point[x=267,y=604]" x="267" y="604" type="Generating" fixed="true"     />
+	</vertices>
+	<edges>
+		<edge vertex1="java.awt.Point[x=974,y=590]" vertex2="java.awt.Point[x=967,y=583]" />
+		<edge vertex1="java.awt.Point[x=967,y=583]" vertex2="java.awt.Point[x=954,y=586]" />
+		<edge vertex1="java.awt.Point[x=954,y=586]" vertex2="java.awt.Point[x=939,y=591]" />
+		<edge vertex1="java.awt.Point[x=939,y=591]" vertex2="java.awt.Point[x=931,y=591]" />
+		<edge vertex1="java.awt.Point[x=931,y=591]" vertex2="java.awt.Point[x=874,y=595]" />
+		<edge vertex1="java.awt.Point[x=874,y=595]" vertex2="java.awt.Point[x=658,y=601]" />
+		<edge vertex1="java.awt.Point[x=658,y=601]" vertex2="java.awt.Point[x=648,y=601]" />
+		<edge vertex1="java.awt.Point[x=648,y=601]" vertex2="java.awt.Point[x=633,y=576]" />
+		<edge vertex1="java.awt.Point[x=633,y=576]" vertex2="java.awt.Point[x=313,y=296]" />
+		<edge vertex1="java.awt.Point[x=633,y=576]" vertex2="java.awt.Point[x=590,y=485]" />
+		<edge vertex1="java.awt.Point[x=648,y=601]" vertex2="java.awt.Point[x=485,y=602]" />
+		<edge vertex1="java.awt.Point[x=485,y=602]" vertex2="java.awt.Point[x=267,y=604]" />
+		<edge vertex1="java.awt.Point[x=267,y=604]" vertex2="java.awt.Point[x=97,y=616]" />
+		<edge vertex1="java.awt.Point[x=485,y=602]" vertex2="java.awt.Point[x=461,y=584]" />
+		<edge vertex1="java.awt.Point[x=461,y=584]" vertex2="java.awt.Point[x=451,y=514]" />
+		<edge vertex1="java.awt.Point[x=461,y=584]" vertex2="java.awt.Point[x=373,y=528]" />
+		<edge vertex1="java.awt.Point[x=373,y=528]" vertex2="java.awt.Point[x=57,y=335]" />
+		<edge vertex1="java.awt.Point[x=373,y=528]" vertex2="java.awt.Point[x=362,y=437]" />
+		<edge vertex1="java.awt.Point[x=658,y=601]" vertex2="java.awt.Point[x=622,y=617]" />
+		<edge vertex1="java.awt.Point[x=622,y=617]" vertex2="java.awt.Point[x=583,y=697]" />
+		<edge vertex1="java.awt.Point[x=622,y=617]" vertex2="java.awt.Point[x=204,y=884]" />
+		<edge vertex1="java.awt.Point[x=874,y=595]" vertex2="java.awt.Point[x=850,y=578]" />
+		<edge vertex1="java.awt.Point[x=850,y=578]" vertex2="java.awt.Point[x=779,y=540]" />
+		<edge vertex1="java.awt.Point[x=850,y=578]" vertex2="java.awt.Point[x=566,y=125]" />
+		<edge vertex1="java.awt.Point[x=931,y=591]" vertex2="java.awt.Point[x=685,y=961]" />
+		<edge vertex1="java.awt.Point[x=939,y=591]" vertex2="java.awt.Point[x=940,y=601]" />
+		<edge vertex1="java.awt.Point[x=940,y=601]" vertex2="java.awt.Point[x=1011,y=1132]" />
+		<edge vertex1="java.awt.Point[x=940,y=601]" vertex2="java.awt.Point[x=983,y=692]" />
+		<edge vertex1="java.awt.Point[x=954,y=586]" vertex2="java.awt.Point[x=744,y=164]" />
+		<edge vertex1="java.awt.Point[x=967,y=583]" vertex2="java.awt.Point[x=1066,y=302]" />
+		<edge vertex1="java.awt.Point[x=974,y=590]" vertex2="java.awt.Point[x=1221,y=766]" />
+	</edges>
+</graph>
+</result>

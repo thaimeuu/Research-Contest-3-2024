@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--Rice Panicel Strucutre File
+-The xy-origin is the left top point in the screen
+-The graph is directed
+-To recover the strucutre, detect the root then span through out the graph -->
+<result 	 signature="STRUCTURE" 	 imagepath="24_2_1_3_1_DSC10067.JPG">
+<graph>
+	<vertices>
+		<vertex id="java.awt.Point[x=96,y=477]" x="96" y="477" type="End" fixed="false"     />
+		<vertex id="java.awt.Point[x=590,y=711]" x="590" y="711" type="End" fixed="false"     />
+		<vertex id="java.awt.Point[x=718,y=443]" x="718" y="443" type="Generating" fixed="true"     />
+		<vertex id="java.awt.Point[x=431,y=104]" x="431" y="104" type="End" fixed="false"     />
+		<vertex id="java.awt.Point[x=466,y=435]" x="466" y="435" type="Generating" fixed="true"     />
+		<vertex id="java.awt.Point[x=567,y=440]" x="567" y="440" type="Primary" fixed="false"     />
+	</vertices>
+	<edges>
+		<edge vertex1="java.awt.Point[x=718,y=443]" vertex2="java.awt.Point[x=590,y=711]" />
+		<edge vertex1="java.awt.Point[x=718,y=443]" vertex2="java.awt.Point[x=567,y=440]" />
+		<edge vertex1="java.awt.Point[x=567,y=440]" vertex2="java.awt.Point[x=431,y=104]" />
+		<edge vertex1="java.awt.Point[x=567,y=440]" vertex2="java.awt.Point[x=466,y=435]" />
+		<edge vertex1="java.awt.Point[x=466,y=435]" vertex2="java.awt.Point[x=96,y=477]" />
+	</edges>
+</graph>
+</result>
