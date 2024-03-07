@@ -20,7 +20,21 @@ def delete_ricegr_files(folder_path):
         print("Deletion completed.")
     except Exception as e:
         print(f"An error occurred: {str(e)}")
+        
+        
+def find_missing_file(src, dest):
+    src_file_names = os.listdir(src)
+    dest_file_names = os.listdir(dest)
+    
+    for src_file in src_file_names:
+        regex = f"{src_file[:-4]}.jpg"
+        if regex not in dest_file_names:
+            print(src_file)
 
+        # break
 
 if __name__ == "__main__":
-    delete_ricegr_files("dataset_2_xml/.Asian-African panel_CIAT/Asian-African panel_New")
+    # delete_ricegr_files("dataset_2_xml/.Asian-African panel_CIAT/Asian-African panel_New")
+    src = "dataset_2_binary/.Asian-African panel_CIAT/Asian-African panel_New"
+    dest = "dataset_2/.Asian-African panel_CIAT/Asian-African panel_CIAT/Asian-African panel_New/riceproj/images"
+    find_missing_file(src, dest)
