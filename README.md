@@ -117,7 +117,9 @@ for the upcoming Research Contest held by my university
   - Final F1 script: [f1-score-by-thai.py](f1-score-by-thai.py)
 - Mar 7:
   - reorganize folders
-  - write report paper
   - test F1 on dataset 2
+- Mar 8:
+  - write report paper
+  
   
 `Expected end date: March 18 2024`
