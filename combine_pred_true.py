@@ -72,17 +72,34 @@ if __name__ == "__main__":
     # y_pred = cv2.imread("test2.png", cv2.IMREAD_GRAYSCALE)
     # combine_pred_true(y_true, y_pred, visualization=True, save_path="D:/HRG/SVNCKH 3-2024/test3.png")
     
-    folder_path = "dataset_2_grayscale/.Asian-African panel_CIAT/Asian-African panel_New"
+    # visualization dataset 1
+    folder_path = "dataset_1_grayscale"
     file_names = os.listdir(folder_path)
     
     for file_name in file_names:
         file_name_png = file_name[:-4] + ".png"
         file_path = folder_path + "/" + file_name
         gray_original_img = cv2.imread(file_path)
-        y_true_25 = cv2.imread(f"dataset_2_y_true/.Asian-African panel_CIAT/Asian-African panel_New/crossing_number/y_true_25/{file_name_png}", cv2.IMREAD_GRAYSCALE)
-        y_pred = cv2.imread(f"dataset_2_y_pred/.Asian-African panel_CIAT/Asian-African panel_New/crossing_number/Zhang-Suen/{file_name_png}", cv2.IMREAD_GRAYSCALE)
+        y_true_25 = cv2.imread(f"dataset_1_y_true/crossing_number/y_true_25/{file_name_png}", cv2.IMREAD_GRAYSCALE)
+        y_pred = cv2.imread(f"dataset_1_y_pred/crossing-number/Zhang-Suen/RUC-Net/{file_name_png}", cv2.IMREAD_GRAYSCALE)
         
         visualize(gray_original_img, y_true_25, y_pred, f"{file_name}")
         
         break
+    
+    
+    # visualization dataset 2
+    # folder_path = "dataset_2_grayscale/.Asian-African panel_CIAT/Asian-African panel_New"
+    # file_names = os.listdir(folder_path)
+    
+    # for file_name in file_names:
+    #     file_name_png = file_name[:-4] + ".png"
+    #     file_path = folder_path + "/" + file_name
+    #     gray_original_img = cv2.imread(file_path)
+    #     y_true_25 = cv2.imread(f"dataset_2_y_true/.Asian-African panel_CIAT/Asian-African panel_New/crossing_number/y_true_25/{file_name_png}", cv2.IMREAD_GRAYSCALE)
+    #     y_pred = cv2.imread(f"dataset_2_y_pred/.Asian-African panel_CIAT/Asian-African panel_New/crossing_number/Zhang-Suen/{file_name_png}", cv2.IMREAD_GRAYSCALE)
+        
+    #     visualize(gray_original_img, y_true_25, y_pred, f"{file_name}")
+        
+    #     break
         
