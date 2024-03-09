@@ -120,6 +120,9 @@ for the upcoming Research Contest held by my university
   - test F1 on dataset 2
 - Mar 8:
   - write report paper
+- Mar 9:
+  - write report paper
+  - Try f1 score in main axis alone
   
   
 `Expected end date: March 18 2024`
