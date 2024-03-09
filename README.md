@@ -122,7 +122,7 @@ for the upcoming Research Contest held by my university
   - write report paper
 - Mar 9:
   - write report paper
-  - Try f1 score in main axis alone
+  - Try f1 score in main axis alone -> [result](visualization/dataset_1_main_axis) and [record](dataset_1_main_axis_F1-record.txt)
   
   
 `Expected end date: March 18 2024`
