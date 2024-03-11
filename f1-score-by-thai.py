@@ -166,9 +166,9 @@ if __name__ == "__main__":
         f1_record.append(f1_score)
         print(f1_score, precision, recall)
         
-        file_path = "dataset_1_main_axis_gradient.txt"
-        with open(file_path, 'a') as f:
-            f.write(f"{file_name}: F1 = {f1_score}\n")
+        # file_path = "dataset_1_main_axis_gradient.txt"
+        # with open(file_path, 'a') as f:
+        #     f.write(f"{file_name}: F1 = {f1_score}, precision = {precision}, recall = {recall}\n")
         
         original_grayscale_img = cv2.imread(f"dataset_1_grayscale/{file_name[:-4]}.JPG")
         visualize(original_grayscale_img, y_true_25, y_pred, f"dataset_1_main_axis_gradient/{file_name}")
