@@ -127,6 +127,8 @@ for the upcoming Research Contest held by my university
   - Write report paper
 - Mar 11:
   - Write report paper
+- Mar 12:
+  - Write report paper
   
   
 `Expected end date: March 18 2024`
