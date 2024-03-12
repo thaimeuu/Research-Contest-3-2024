@@ -123,35 +123,6 @@ if __name__ == "__main__":
     
     
     # f1-score for dataset 1 main axis (Zhang Suen)
-    # folder_path = "dataset_1_y_true_main_axis/crossing_number/y_true_1"
-    # file_names = os.listdir(folder_path)
-    # f1_record = []
-    
-    # for file_name in file_names:
-    #     print(f"=====\nEXAMINING {file_name}....\n============")
-    #     y_true_25 = cv2.imread(f"dataset_1_y_true_main_axis/crossing_number/y_true_25/{file_name}", cv2.IMREAD_GRAYSCALE)
-    #     y_true_1 = cv2.imread(f"dataset_1_y_true_main_axis/crossing_number/y_true_1/{file_name}", cv2.IMREAD_GRAYSCALE)
-    #     y_pred = cv2.imread(f"dataset_1_y_pred/crossing-number/Zhang-Suen/RUC-Net/{file_name}", cv2.IMREAD_GRAYSCALE)
-        
-    #     f1_score, precision, recall = f1_main_axis(y_true_25, y_true_1, y_pred)
-    #     f1_record.append(f1_score)
-    #     print(f1_score, precision, recall)
-        
-    #     # file_path = "dataset_1_main_axis_F1-record.txt"
-    #     # with open(file_path, 'a') as f:
-    #     #     f.write(f"{file_name}: F1 = {f1_score}\n")
-        
-    #     original_grayscale_img = cv2.imread(f"dataset_1_grayscale/{file_name[:-4]}.JPG")
-    #     visualize(original_grayscale_img, y_true_25, y_pred, f"dataset_1_main_axis/{file_name}")
-        
-    #     print("")
-    
-    #     # break
-    
-    # print(min(f1_record), max(f1_record), np.mean(f1_record))
-    
-    
-    # f1-score for dataset 1 main axis (gradient)
     folder_path = "dataset_1_y_true_main_axis/crossing_number/y_true_1"
     file_names = os.listdir(folder_path)
     f1_record = []
@@ -160,24 +131,53 @@ if __name__ == "__main__":
         print(f"=====\nEXAMINING {file_name}....\n============")
         y_true_25 = cv2.imread(f"dataset_1_y_true_main_axis/crossing_number/y_true_25/{file_name}", cv2.IMREAD_GRAYSCALE)
         y_true_1 = cv2.imread(f"dataset_1_y_true_main_axis/crossing_number/y_true_1/{file_name}", cv2.IMREAD_GRAYSCALE)
-        y_pred = cv2.imread(f"dataset_1_y_pred/crossing-number/gradient-based-optimization/RUC-Net/{file_name}", cv2.IMREAD_GRAYSCALE)
+        y_pred = cv2.imread(f"dataset_1_y_pred/crossing-number/Zhang-Suen/RUC-Net/{file_name}", cv2.IMREAD_GRAYSCALE)
         
         f1_score, precision, recall = f1_main_axis(y_true_25, y_true_1, y_pred)
         f1_record.append(f1_score)
         print(f1_score, precision, recall)
         
-        # file_path = "dataset_1_main_axis_gradient.txt"
-        # with open(file_path, 'a') as f:
-        #     f.write(f"{file_name}: F1 = {f1_score}, precision = {precision}, recall = {recall}\n")
+        file_path = "dataset_1_main_axis_F1-record.txt"
+        with open(file_path, 'a') as f:
+            f.write(f"{file_name}: F1 = {f1_score}, {precision}, {recall}\n")
         
         original_grayscale_img = cv2.imread(f"dataset_1_grayscale/{file_name[:-4]}.JPG")
-        visualize(original_grayscale_img, y_true_25, y_pred, f"dataset_1_main_axis_gradient/{file_name}")
+        visualize(original_grayscale_img, y_true_25, y_pred, f"dataset_1_main_axis/{file_name}")
         
         print("")
     
         break
     
     print(min(f1_record), max(f1_record), np.mean(f1_record))
+    
+    
+    # f1-score for dataset 1 main axis (gradient)
+    # folder_path = "dataset_1_y_true_main_axis/crossing_number/y_true_1"
+    # file_names = os.listdir(folder_path)
+    # f1_record = []
+    
+    # for file_name in file_names:
+    #     print(f"=====\nEXAMINING {file_name}....\n============")
+    #     y_true_25 = cv2.imread(f"dataset_1_y_true_main_axis/crossing_number/y_true_25/{file_name}", cv2.IMREAD_GRAYSCALE)
+    #     y_true_1 = cv2.imread(f"dataset_1_y_true_main_axis/crossing_number/y_true_1/{file_name}", cv2.IMREAD_GRAYSCALE)
+    #     y_pred = cv2.imread(f"dataset_1_y_pred/crossing-number/gradient-based-optimization/RUC-Net/{file_name}", cv2.IMREAD_GRAYSCALE)
+        
+    #     f1_score, precision, recall = f1_main_axis(y_true_25, y_true_1, y_pred)
+    #     f1_record.append(f1_score)
+    #     print(f1_score, precision, recall)
+        
+    #     # file_path = "dataset_1_main_axis_gradient.txt"
+    #     # with open(file_path, 'a') as f:
+    #     #     f.write(f"{file_name}: F1 = {f1_score}, precision = {precision}, recall = {recall}\n")
+        
+    #     original_grayscale_img = cv2.imread(f"dataset_1_grayscale/{file_name[:-4]}.JPG")
+    #     visualize(original_grayscale_img, y_true_25, y_pred, f"dataset_1_main_axis_gradient/{file_name}")
+        
+    #     print("")
+    
+    #     break
+    
+    # print(min(f1_record), max(f1_record), np.mean(f1_record))
     
     # f1-score for dataset 2 main axis
     
