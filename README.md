@@ -129,6 +129,11 @@ for the upcoming Research Contest held by my university
   - Write report paper
 - Mar 12:
   - Write report paper
+- Mar 13:
+  - Write report paper
+- Mar 14:
+  - Write report paper
+  - Done -> [paper](<Architecture Analysis of Rice Panicle  Using Deep Learning.pdf>)
   
   
 `Expected end date: March 18 2024`
