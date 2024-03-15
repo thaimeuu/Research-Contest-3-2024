@@ -39,11 +39,11 @@ def main():
 
         # Add junctions to grayscale img
         for a, b in generating:
-            cv2.circle(img, (a, b), 8, (0, 255, 255), cv2.FILLED)
+            cv2.circle(img, (a, b), 15, (0, 255, 255), cv2.FILLED)
         for a, b in primary:
-            cv2.circle(img, (a, b), 8, (255, 255, 255), cv2.FILLED)
+            cv2.circle(img, (a, b), 15, (255, 255, 255), cv2.FILLED)
         for a, b in secondary:
-            cv2.circle(img, (a, b), 8, (255, 0, 0), cv2.FILLED)
+            cv2.circle(img, (a, b), 15, (255, 0, 0), cv2.FILLED)
         # for a, b in tertiary:
         #     cv2.circle(img, (a, b), 8, (0, 255, 0), cv2.FILLED)
         # for a, b in quaternary:
@@ -58,7 +58,7 @@ def main():
         
         print(f"Successfully created {save_path}\n")
         
-        break
+        # break
 
 
 if __name__ == "__main__":
