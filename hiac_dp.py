@@ -28,13 +28,13 @@ How to use: manually specifying file_name, choose parameters and run the script
 
 
 def hiac_dp() -> None:
-    folder_path = r"skeleton_dataset"
+    folder_path = r"dataset_1_skeleton_Zhang_Suen/RUC-Net"
     file_names = os.listdir(folder_path)
     
-    file_name = file_names[20]
+    file_name = file_names[7]
 
     # Specify HIAC parameters
-    k, T, d, threshold = (30, 0.7, 5, 0.9925)
+    k, T, d, threshold = (30, 0.7, 5, 1.007)
 
     file_path = f"{folder_path}/{file_name}"
     img_in = cv2.imread(file_path, cv2.IMREAD_GRAYSCALE)
@@ -58,7 +58,7 @@ def hiac_dp() -> None:
         for row in range(white_px_norm.shape[0]):
             white_px_norm[row, col] = (white_px_norm[row, col] - min_) / (max_ - min_)
 
-    norm_data_save_path = "clustered_skeleton/HIAC-DPC/HIAC-info"
+    norm_data_save_path = "clustered_skeleton/HIAC-DPC/Zhang-Suen/HIAC-info"
     np.savetxt(os.path.join(norm_data_save_path, file_name[:-4] + "_normalized.txt"), white_px_norm)
     
     # Plot normalized white px (Uncomment)
@@ -68,7 +68,7 @@ def hiac_dp() -> None:
     # plt.show()
 
     # Call HIAC (important)
-    photoPath = rf"clustered_skeleton/HIAC-DPC/HIAC-info/{file_name[:-4]}_decision_graph.png"
+    photoPath = rf"clustered_skeleton/HIAC-DPC/Zhang-Suen/HIAC-info/{file_name[:-4]}_decision_graph.png"
     distanceTGP = TGP(white_px_norm, k, photoPath, threshold)
     # for object i, if j is invalid-neighbor of i, neighbor_index[i][j] = -1
     neighbor_index = prune(white_px_norm, k, threshold, distanceTGP)
@@ -78,11 +78,11 @@ def hiac_dp() -> None:
         bata = shrink(white_px_norm, k, T, neighbor_index)
         ameliorated_white_px = bata
 
-    ameliorated_data_save_path = "clustered_skeleton/HIAC-DPC/HIAC-info"
+    ameliorated_data_save_path = "clustered_skeleton/HIAC-DPC/Zhang-Suen/HIAC-info"
     np.savetxt(os.path.join(ameliorated_data_save_path, file_name[:-4] + "_ameliorated_by_HIAC.txt"), ameliorated_white_px)
     
     # Call DPC (important) -> get the labels
-    cl: list[int] = DPC(ameliorated_white_px, k=25, ratio=2, kernel="cutoff", decision_graph=False)
+    cl: list[int] = DPC(ameliorated_white_px, k=28, ratio=2, kernel="cutoff", decision_graph=False)
 
     # Plot clustered ameliorated white px (Uncomment)
     plt.scatter(ameliorated_white_px[:, 1], ameliorated_white_px[:, 0], c=cl, s=1)
@@ -102,7 +102,7 @@ def hiac_dp() -> None:
     # Draw centers on original image
     img_out = cv2.cvtColor(img_in, cv2.COLOR_GRAY2RGB)
     for i in range(len(centers)):
-        cv2.circle(img_out, (centers[i, 1], centers[i, 0]), 1, (0, 0, 255), -1)
+        cv2.circle(img_out, (centers[i, 1], centers[i, 0]), 2, (0, 0, 255), -1)
 
     # Uncomment 3 lines below to view the clustered image
     # cv2.imshow("DPC on HIAC-ameliorated-white px", img_out)
@@ -110,7 +110,7 @@ def hiac_dp() -> None:
     # cv2.destroyAllWindows()
 
     # Save image
-    save_path = rf"clustered_skeleton/HIAC-DPC/{file_name}"
+    save_path = rf"clustered_skeleton/HIAC-DPC/Zhang-Suen/{file_name}"
     cv2.imwrite(save_path, img_out)
     
     print(f"Successfully generated {file_name}")
