@@ -28,7 +28,7 @@ def dp() -> None:
 
     returns: none (save image)
     """
-    folder_path = r"skeleton_dataset_Kien"
+    folder_path = r"dataset_1_skeleton_Zhang_Suen/RUC-Net"
     file_names = os.listdir(folder_path)
 
     for file_name in file_names:
@@ -45,7 +45,7 @@ def dp() -> None:
         white_px = np.argwhere(img_in > 0)
 
         # Call DPC
-        labels = DPC(white_px, 25, ratio=0.75, kernel="cutoff", decision_graph=False)
+        labels = DPC(white_px, 28, ratio=0.75, kernel="cutoff", decision_graph=False)
         clusters, freq = np.unique(labels, return_counts=True)
 
         # Plot cluster centers
@@ -57,7 +57,7 @@ def dp() -> None:
 
         img_out = cv2.cvtColor(img_in, cv2.COLOR_GRAY2RGB)
         for i in range(len(centers)):
-            cv2.circle(img_out, (centers[i, 1], centers[i, 0]), 1, (0, 0, 255), -1)
+            cv2.circle(img_out, (centers[i, 1], centers[i, 0]), 2, (0, 0, 255), -1)
 
         # Uncomment 3 lines below to view the clustered image
         # cv2.imshow("DPC", img_out)
@@ -65,7 +65,8 @@ def dp() -> None:
         # cv2.destroyAllWindows()
 
         # Save image
-        save_path = rf"clustered_skeleton/DPC/gradient-based-optimization/{file_name}"
+        # save_path = rf"clustered_skeleton/DPC/gradient-based-optimization/{file_name}"
+        save_path = rf"clustered_skeleton/DPC/Zhang-Suen/{file_name}"
         cv2.imwrite(save_path, img_out)
         
         print(f"Successfully generated {file_name}")
