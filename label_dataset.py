@@ -17,14 +17,16 @@ Instructions:
 """
 
 def main():
-    folder_path = "dataset_2_grayscale/.Asian-African panel_CIAT/Asian-African panel_New"
+    folder_path = "dataset_1_grayscale"
+    # folder_path = "dataset_2_grayscale/.Asian-African panel_CIAT/Asian-African panel_New"
     file_names = os.listdir(folder_path)
     for file_name in file_names:
         # Read grayscale img
         path = folder_path + "/" + file_name
         img = cv2.imread(path)
 
-        xml_file_path = f"dataset_2_xml/.Asian-African panel_CIAT/Asian-African panel_New/{file_name[:-4]}.ricepr"
+        xml_file_path = f"dataset_1_xml/{file_name[:-4]}.ricepr"
+        # xml_file_path = f"dataset_2_xml/.Asian-African panel_CIAT/Asian-African panel_New/{file_name[:-4]}.ricepr"
         print(f"===\nExtracting junctions from {xml_file_path}\n===")
 
         # lists of junctions' coordinate
@@ -42,15 +44,16 @@ def main():
             cv2.circle(img, (a, b), 8, (255, 255, 255), cv2.FILLED)
         for a, b in secondary:
             cv2.circle(img, (a, b), 8, (255, 0, 0), cv2.FILLED)
-        for a, b in tertiary:
-            cv2.circle(img, (a, b), 8, (0, 255, 0), cv2.FILLED)
-        for a, b in quaternary:
-            cv2.circle(img, (a, b), 8, (255, 255, 0), cv2.FILLED)
+        # for a, b in tertiary:
+        #     cv2.circle(img, (a, b), 8, (0, 255, 0), cv2.FILLED)
+        # for a, b in quaternary:
+        #     cv2.circle(img, (a, b), 8, (255, 255, 0), cv2.FILLED)
         # for a, b in terminal:
         #     cv2.circle(img, (a, b), 8, (0, 0, 255), cv2.FILLED)
 
         # Save file
-        save_path = rf"dataset_2_labelled/.Asian-African panel_CIAT/Asian-African panel_New/{file_name}"
+        save_path = rf"dataset_1_labelled/{file_name}"
+        # save_path = rf"dataset_2_labelled/.Asian-African panel_CIAT/Asian-African panel_New/{file_name}"
         cv2.imwrite(save_path, img)
         
         print(f"Successfully created {save_path}\n")
