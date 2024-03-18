@@ -134,6 +134,10 @@ for the upcoming Research Contest held by my university
 - Mar 14:
   - Write report paper
   - Done -> [paper](<Architecture Analysis of Rice Panicle  Using Deep Learning.pdf>)
+- Mar 15 - Mar 18:
+  - Paper revision
+
+`WELL DONE!`
   
   
 `Expected end date: March 18 2024`
